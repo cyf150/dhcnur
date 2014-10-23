@@ -13,7 +13,9 @@ class MyUISpitViewController: UISplitViewController,UISplitViewControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate=self
+        presentsWithGesture = true
         preferredPrimaryColumnWidthFraction = 0.3
+        preferredDisplayMode = UISplitViewControllerDisplayMode.PrimaryOverlay
         // Do any additional setup after loading the view.
     }
     
@@ -22,7 +24,17 @@ class MyUISpitViewController: UISplitViewController,UISplitViewControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-
+    func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
+        println(displayMode)
+    }
+    func targetDisplayModeForActionInSplitViewController(svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
+        var buttom = displayModeButtonItem()
+        var model = displayMode
+        println(model)
+        println(buttom.description)
+        println(displayMode)
+        return UISplitViewControllerDisplayMode.Automatic
+    }
     /*
     // MARK: - Navigation
 

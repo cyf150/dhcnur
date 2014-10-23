@@ -12,7 +12,7 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
-
+    var arr :NSArray = NSArray()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,8 +35,37 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
+        getmenulist()
+        
     }
-
+   func getmenulist()
+   {
+    let manager=AFHTTPRequestOperationManager()
+    //var url = "http://api.openweathermap.org/data/2.5/weather"
+    var url = "http://10.160.16.30/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=Nur.Iphone.Common&methodName=logon&type=Method"
+    //var urlstr:NSString = "http://api.openweathermap.org/data/2.5/weather
+    var set=NSSet()
+    manager.responseSerializer.acceptableContentTypes=set.setByAddingObject("text/html")
+    let params=["userName":"dh444444","password":"30","logonLocType":""]
+    manager.GET(url,
+        parameters: params,
+        success: {
+            (operation:AFHTTPRequestOperation!,
+            responseObject:AnyObject!) in
+            var strDIC = responseObject as? NSDictionary
+            //println(str)
+            if strDIC?.count>1 {
+               self.arr = strDIC?["Locs"] as NSArray
+                self.tableView.reloadData()
+            }
+            println("JSON:"+responseObject.description!)
+        }, failure:{
+            (operation:AFHTTPRequestOperation!,
+            error:NSError!)in
+            println("error:"+error.localizedDescription)
+    } )
+    
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,9 +82,10 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as NSDate
+                //let object = objects[indexPath.row] as NSDate
+                let obj = arr[indexPath.row] as NSDictionary
                 let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
-                controller.detailItem = object
+                controller.detailItem = obj["LocDesc"]
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -69,14 +99,15 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return arr.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
-        let object = objects[indexPath.row] as NSDate
-        cell.textLabel?.text = object.description
+        //let object = objects[indexPath.row] as NSDate
+        let obj = arr[indexPath.row] as NSDictionary
+        cell.textLabel?.text = obj["LocDesc"] as NSString
         return cell
     }
 

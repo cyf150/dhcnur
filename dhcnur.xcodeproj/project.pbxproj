@@ -14,6 +14,7 @@
 		89D5D5DB19F8CA1200304AE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89D5D5DA19F8CA1200304AE4 /* Images.xcassets */; };
 		89D5D5DE19F8CA1200304AE4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D5D5DC19F8CA1200304AE4 /* LaunchScreen.xib */; };
 		89D5D5EA19F8CA1200304AE4 /* dhcnurTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5D5E919F8CA1200304AE4 /* dhcnurTests.swift */; };
+		89D5D5F519F8D5CA00304AE4 /* MyUISpitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		89D5D5E319F8CA1200304AE4 /* dhcnurTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dhcnurTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D5D5E819F8CA1200304AE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89D5D5E919F8CA1200304AE4 /* dhcnurTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dhcnurTests.swift; sourceTree = "<group>"; };
+		89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUISpitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				89D5D5D119F8CA1200304AE4 /* AppDelegate.swift */,
+				89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */,
 				89D5D5D319F8CA1200304AE4 /* MasterViewController.swift */,
 				89D5D5D519F8CA1200304AE4 /* DetailViewController.swift */,
 				89D5D5D719F8CA1200304AE4 /* Main.storyboard */,
@@ -217,6 +220,7 @@
 			files = (
 				89D5D5D619F8CA1200304AE4 /* DetailViewController.swift in Sources */,
 				89D5D5D419F8CA1200304AE4 /* MasterViewController.swift in Sources */,
+				89D5D5F519F8D5CA00304AE4 /* MyUISpitViewController.swift in Sources */,
 				89D5D5D219F8CA1200304AE4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

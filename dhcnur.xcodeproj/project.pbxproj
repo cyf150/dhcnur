@@ -15,6 +15,9 @@
 		89D5D5DE19F8CA1200304AE4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D5D5DC19F8CA1200304AE4 /* LaunchScreen.xib */; };
 		89D5D5EA19F8CA1200304AE4 /* dhcnurTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5D5E919F8CA1200304AE4 /* dhcnurTests.swift */; };
 		89D5D5F519F8D5CA00304AE4 /* MyUISpitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */; };
+		89E9B45B19FA8CEC0087CB98 /* 0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 89E9B45A19FA8CEC0087CB98 /* 0.gif */; };
+		89E9B45D19FA8CF20087CB98 /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 89E9B45C19FA8CF20087CB98 /* 1.gif */; };
+		89E9B45F19FA8CF70087CB98 /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 89E9B45E19FA8CF70087CB98 /* 2.gif */; };
 		BEE36941B73E465CB2B7895E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF7094A1EB64969B6054528 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,9 @@
 		89D5D5E919F8CA1200304AE4 /* dhcnurTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dhcnurTests.swift; sourceTree = "<group>"; };
 		89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUISpitViewController.swift; sourceTree = "<group>"; };
 		89D5D5F819F9110A00304AE4 /* dhcnurBridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dhcnurBridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		89E9B45A19FA8CEC0087CB98 /* 0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 0.gif; path = "../../../../../../Volumes/VMware Shared Folders/Mac10共享文件/Image/light/0.gif"; sourceTree = "<group>"; };
+		89E9B45C19FA8CF20087CB98 /* 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 1.gif; path = "../../../../../../Volumes/VMware Shared Folders/Mac10共享文件/Image/light/1.gif"; sourceTree = "<group>"; };
+		89E9B45E19FA8CF70087CB98 /* 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 2.gif; path = "../../../../../../Volumes/VMware Shared Folders/Mac10共享文件/Image/light/2.gif"; sourceTree = "<group>"; };
 		A87C75679D70454497565745 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +100,9 @@
 				89D5D5D519F8CA1200304AE4 /* DetailViewController.swift */,
 				89D5D5D719F8CA1200304AE4 /* Main.storyboard */,
 				89D5D5DA19F8CA1200304AE4 /* Images.xcassets */,
+				89E9B45E19FA8CF70087CB98 /* 2.gif */,
+				89E9B45C19FA8CF20087CB98 /* 1.gif */,
+				89E9B45A19FA8CEC0087CB98 /* 0.gif */,
 				89D5D5DC19F8CA1200304AE4 /* LaunchScreen.xib */,
 				89D5D5F819F9110A00304AE4 /* dhcnurBridging-Header.h */,
 				89D5D5CF19F8CA1200304AE4 /* Supporting Files */,
@@ -217,7 +226,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				89D5D5D919F8CA1200304AE4 /* Main.storyboard in Resources */,
+				89E9B45B19FA8CEC0087CB98 /* 0.gif in Resources */,
 				89D5D5DE19F8CA1200304AE4 /* LaunchScreen.xib in Resources */,
+				89E9B45F19FA8CF70087CB98 /* 2.gif in Resources */,
+				89E9B45D19FA8CF20087CB98 /* 1.gif in Resources */,
 				89D5D5DB19F8CA1200304AE4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

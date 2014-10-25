@@ -13,7 +13,10 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
     var arr :NSArray = NSArray()
-
+    var logonloc = ""
+    var userid = ""
+    var usergroup = ""
+    var username = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -26,20 +29,40 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-
+       
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
         self.navigationItem.rightBarButtonItem = addButton
         
-        
         if let split = self.splitViewController {
             let controllers = split.viewControllers
+           
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
         println("Masterviewinit")
         getmenulist()
         
     }
-   func getmenulist()
+    func getmenulist()
+    {
+        var url = "http://10.160.16.30/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=Nur.Iphone.Common&methodName=logon&type=Method"
+        let params=["userName":"dh444444","password":"30","logonLocType":""]
+        HttpUtil().requestwithurlandparam(url, paramdic: params, CompletinonHander: {
+           data in
+            if let retdate = data as? NSObject {
+                var strDIC = data as? NSDictionary
+                //println(str)
+                if strDIC?.count>1 {
+                    self.arr = strDIC?["Locs"] as NSArray
+                    self.tableView.reloadData()
+                }
+                println(retdate)
+            }
+            else{
+              println("error")
+            }
+        })
+    }
+   func getmenulist2()
    {
     let manager=AFHTTPRequestOperationManager()
     //var url = "http://api.openweathermap.org/data/2.5/weather"

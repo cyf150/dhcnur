@@ -9,10 +9,11 @@
 import UIKit
 
 class MyUISpitViewController: UISplitViewController,UISplitViewControllerDelegate {
-
+    var logonloc:NSString?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate=self
+        var ma: AnyObject = self.viewControllers[0]
         presentsWithGesture = true
         preferredPrimaryColumnWidthFraction = 0.3
         preferredDisplayMode = UISplitViewControllerDisplayMode.PrimaryOverlay
@@ -30,9 +31,9 @@ class MyUISpitViewController: UISplitViewController,UISplitViewControllerDelegat
     func targetDisplayModeForActionInSplitViewController(svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
         var buttom = displayModeButtonItem()
         var model = displayMode
-        println(model)
-        println(buttom.description)
-        println(displayMode)
+        //println(model)
+        //println(buttom.description)
+        //println(displayMode)
         return UISplitViewControllerDisplayMode.Automatic
     }
     /*

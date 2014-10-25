@@ -13,10 +13,13 @@ class MyUISpitViewController: UISplitViewController,UISplitViewControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate=self
-        var ma: AnyObject = self.viewControllers[0]
+        var ma = self.viewControllers[0] as MasterTBarViewController
+        ma.tblogonloc = logonloc
         presentsWithGesture = true
         preferredPrimaryColumnWidthFraction = 0.3
-        preferredDisplayMode = UISplitViewControllerDisplayMode.PrimaryOverlay
+        preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
+        let navigationController = self.viewControllers[self.viewControllers.count-1] as UINavigationController
+        navigationController.topViewController.navigationItem.leftBarButtonItem = self.displayModeButtonItem()
         // Do any additional setup after loading the view.
     }
     

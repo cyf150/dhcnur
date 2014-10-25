@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8988BABC19FB9F8800D87D9D /* SelLocView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988BABB19FB9F8800D87D9D /* SelLocView.xib */; };
+		8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */; };
+		8988BAC019FBD54200D87D9D /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8988BABF19FBD54200D87D9D /* MoreViewController.swift */; };
 		89CF9D3219FB32CD001658F3 /* LogonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF9D3119FB32CD001658F3 /* LogonViewController.swift */; };
 		89CF9D3419FB33CA001658F3 /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF9D3319FB33CA001658F3 /* HttpUtil.swift */; };
 		89CF9D3619FB7716001658F3 /* SelectLocTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		2CF7094A1EB64969B6054528 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8988BABB19FB9F8800D87D9D /* SelLocView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelLocView.xib; sourceTree = "<group>"; };
+		8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTBarViewController.swift; sourceTree = "<group>"; };
+		8988BABF19FBD54200D87D9D /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		89CF9D3119FB32CD001658F3 /* LogonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogonViewController.swift; sourceTree = "<group>"; };
 		89CF9D3319FB33CA001658F3 /* HttpUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
 		89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocTableViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				89CF9D3319FB33CA001658F3 /* HttpUtil.swift */,
 				89D5D5D719F8CA1200304AE4 /* Main.storyboard */,
 				89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */,
+				8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */,
 				89D5D5DA19F8CA1200304AE4 /* Images.xcassets */,
 				89E9B45E19FA8CF70087CB98 /* 2.gif */,
 				89E9B45C19FA8CF20087CB98 /* 1.gif */,
@@ -126,6 +131,7 @@
 				89D5D5DC19F8CA1200304AE4 /* LaunchScreen.xib */,
 				89D5D5F819F9110A00304AE4 /* dhcnurBridging-Header.h */,
 				89D5D5CF19F8CA1200304AE4 /* Supporting Files */,
+				8988BABF19FBD54200D87D9D /* MoreViewController.swift */,
 			);
 			path = dhcnur;
 			sourceTree = "<group>";
@@ -302,11 +308,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8988BAC019FBD54200D87D9D /* MoreViewController.swift in Sources */,
 				89D5D5D619F8CA1200304AE4 /* DetailViewController.swift in Sources */,
 				89CF9D3219FB32CD001658F3 /* LogonViewController.swift in Sources */,
 				89D5D5D419F8CA1200304AE4 /* MasterViewController.swift in Sources */,
 				89D5D5F519F8D5CA00304AE4 /* MyUISpitViewController.swift in Sources */,
 				89CF9D3619FB7716001658F3 /* SelectLocTableViewController.swift in Sources */,
+				8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */,
 				89D5D5D219F8CA1200304AE4 /* AppDelegate.swift in Sources */,
 				89CF9D3419FB33CA001658F3 /* HttpUtil.swift in Sources */,
 			);

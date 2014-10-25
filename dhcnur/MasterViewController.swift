@@ -13,7 +13,7 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
     var arr :NSArray = NSArray()
-    var logonloc = ""
+    var logonloc :NSString?
     var userid = ""
     var usergroup = ""
     var username = ""
@@ -35,11 +35,14 @@ class MasterViewController: UITableViewController {
         
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-           
+            var tbvc = split.viewControllers[0] as MasterTBarViewController
+            self.logonloc = tbvc.tblogonloc
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
         println("Masterviewinit")
+        if let loc = logonloc?{
         getmenulist()
+        }
         
     }
     func getmenulist()

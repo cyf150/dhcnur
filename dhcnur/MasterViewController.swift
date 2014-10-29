@@ -40,24 +40,24 @@ class MasterViewController: UITableViewController {
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
         println("Masterviewinit")
+        self.tableView.estimatedRowHeight = 44;
+        tableView.rowHeight = UITableViewAutomaticDimension
         if let loc = logonloc?{
-        getmenulist()
+            getmenulist()
         }
         
     }
     func getmenulist()
     {
-        var url = "http://10.160.16.30/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=Nur.Iphone.Common&methodName=logon&type=Method"
-        let params=["userName":"dh444444","password":"30","logonLocType":""]
+        var url = "http://10.56.32.87/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getcurwardpat&type=Method"
+        let params=["wardId":logonloc!]
         HttpUtil().requestwithurlandparam(url, paramdic: params, CompletinonHander: {
            data in
             if let retdate = data as? NSObject {
-                var strDIC = data as? NSDictionary
-                //println(str)
-                if strDIC?.count>1 {
-                    self.arr = strDIC?["Locs"] as NSArray
-                    self.tableView.reloadData()
-                }
+                var strDIC = data as? NSArray
+                self.arr = strDIC!
+                self.tableView.reloadData()
+               
                 println(retdate)
             }
             else{
@@ -107,14 +107,17 @@ class MasterViewController: UITableViewController {
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "patemrcode" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 //let object = objects[indexPath.row] as NSDate
                 let obj = arr[indexPath.row] as NSDictionary
-                let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
-                controller.detailItem = obj["LocDesc"]
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
+                let controller = segue.destinationViewController  as PatCodeTableVC
+                var adm = obj["EpisodeID"]?.description
+
+                controller.EpisodeID = adm
+                    controller.logonloc = logonloc
+                //controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                //controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }
@@ -134,7 +137,9 @@ class MasterViewController: UITableViewController {
 
         //let object = objects[indexPath.row] as NSDate
         let obj = arr[indexPath.row] as NSDictionary
-        cell.textLabel?.text = obj["LocDesc"] as NSString
+        cell.textLabel?.text = obj["PatName"] as NSString
+        cell.detailTextLabel?.text = obj["bedCode"]?.description
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
 

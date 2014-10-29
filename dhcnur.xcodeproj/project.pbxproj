@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8912391519FFA4E200529C5C /* PatCodeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912391419FFA4E200529C5C /* PatCodeTableVC.swift */; };
 		8988BABC19FB9F8800D87D9D /* SelLocView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988BABB19FB9F8800D87D9D /* SelLocView.xib */; };
 		8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */; };
 		8988BAC019FBD54200D87D9D /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8988BABF19FBD54200D87D9D /* MoreViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		2CF7094A1EB64969B6054528 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8912391419FFA4E200529C5C /* PatCodeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatCodeTableVC.swift; sourceTree = "<group>"; };
 		8988BABB19FB9F8800D87D9D /* SelLocView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelLocView.xib; sourceTree = "<group>"; };
 		8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTBarViewController.swift; sourceTree = "<group>"; };
 		8988BABF19FBD54200D87D9D /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				89D5D5D719F8CA1200304AE4 /* Main.storyboard */,
 				89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */,
 				8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */,
+				8912391419FFA4E200529C5C /* PatCodeTableVC.swift */,
 				89D5D5DA19F8CA1200304AE4 /* Images.xcassets */,
 				89E9B45E19FA8CF70087CB98 /* 2.gif */,
 				89E9B45C19FA8CF20087CB98 /* 1.gif */,
@@ -316,6 +319,7 @@
 				89CF9D3619FB7716001658F3 /* SelectLocTableViewController.swift in Sources */,
 				8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */,
 				89D5D5D219F8CA1200304AE4 /* AppDelegate.swift in Sources */,
+				8912391519FFA4E200529C5C /* PatCodeTableVC.swift in Sources */,
 				89CF9D3419FB33CA001658F3 /* HttpUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

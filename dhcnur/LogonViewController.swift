@@ -10,6 +10,7 @@ import UIKit
 
 class LogonViewController: UIViewController,UIPopoverControllerDelegate,UIPopoverPresentationControllerDelegate {
 
+    @IBOutlet weak var sure: UIButton!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var selectloc: UIButton!
@@ -31,6 +32,22 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate,UIPopove
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func username_didend(sender: AnyObject) {
+        self.password.becomeFirstResponder()
+    }
+    
+    
+    @IBAction func password_didend(sender: AnyObject) {
+        self.password.resignFirstResponder()
+        if (password.text != "")&(username.text != "")
+        {
+           self.sure.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+        }
+    }
+    
+    @IBAction func View_TouchDown(sender: AnyObject) {
+        UIApplication.sharedApplication().sendAction(Selector("resignFirstResponder"), to: nil, from: nil, forEvent: nil)
+    }
     @IBAction func Selectlogonloc(sender: UIView) {
         if let loc = userlogonlocs? {
             //var descon = storyboard?.instantiateViewControllerWithIdentifier("SelectLocT") as UITableViewController
@@ -67,9 +84,20 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate,UIPopove
         
     }
     func logon() {
-        var url = "http://10.56.32.189/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=Nur.Iphone.Common&methodName=logon&type=Method"
+        var url = "http://10.56.32.87/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=logon&type=Method"
         var usern = username.text!
         var pass = password.text!
+        if (usern == "")||(pass == "")
+        {
+            let alert = UIAlertController(title: "", message: "用户名或密码不能为空！", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default) {
+                [weak alert] action in
+                alert!.dismissViewControllerAnimated(true, completion: nil)
+            }
+            alert.addAction(okAction)
+            presentViewController(alert, animated: true, completion: nil)
+            return
+        }
         var type = ""
         let params=["userName":usern,"password":pass,"logonLocType":type]
         HttpUtil().requestwithurlandparam(url, paramdic: params, CompletinonHander: {
@@ -79,20 +107,44 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate,UIPopove
                 println(strDIC)
                 if strDIC?.count > 0 {
                    self.logonuserid = strDIC?["UserID"] as? NSString
+                    var errinfo = strDIC?["ErrorInfo"] as? NSString
+                    if (errinfo? != ""){
+                        let alerterr = UIAlertController(title: "", message: errinfo, preferredStyle: .Alert)
+                        let okAction = UIAlertAction(title: "OK", style: .Default) {
+                            [weak alerterr] action in
+                            alerterr!.dismissViewControllerAnimated(true, completion: nil)
+                            
+                        }
+                        alerterr.addAction(okAction)
+                        self.presentViewController(alerterr, animated: true, completion: nil)
+                        return
+                    }
                    self.userlogonlocs = strDIC?["Locs"] as? NSArray
                    if self.userlogonlocs?.count>0 {
                       var firstdic = self.userlogonlocs?[0] as NSDictionary
                       self.selectloc.titleLabel?.text = firstdic["LocDesc"] as NSString
-                      self.logonloc = firstdic["LocID"] as? NSString
-                      self.logongroup = firstdic["GroupID"] as? NSString
-                      self.logonward = firstdic["WardID"] as? NSString
-                }
+                      self.logonloc = firstdic["LocID"]?.description
+                      self.logongroup = firstdic["GroupID"]?.description
+                      self.logonward = firstdic["WardID"]?.description
+                    }
+                   
+               }
+                else{
+                
                 }
                 //println(str)
                 
             }
             else{
-                println("error")
+                //println("error")
+                let alerterr = UIAlertController(title: "", message: "用户名或密码不能为空！", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "OK", style: .Default) {
+                    [weak alerterr] action in
+                    alerterr!.dismissViewControllerAnimated(true, completion: nil)
+                }
+                alerterr.addAction(okAction)
+                self.presentViewController(alerterr, animated: true, completion: nil)
+
             }
         })
         

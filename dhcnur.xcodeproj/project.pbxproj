@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		890563351A010BC9003084A3 /* YBHLJLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890563341A010BC9003084A3 /* YBHLJLTableViewController.swift */; };
+		8905633A1A010DAF003084A3 /* HBCommView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890563391A010DAF003084A3 /* HBCommView.xib */; };
+		8905633C1A010DF5003084A3 /* HBCommView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905633B1A010DF5003084A3 /* HBCommView.swift */; };
+		8905633E1A011399003084A3 /* YBHLJLNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905633D1A011399003084A3 /* YBHLJLNavVC.swift */; };
 		8912391519FFA4E200529C5C /* PatCodeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912391419FFA4E200529C5C /* PatCodeTableVC.swift */; };
 		8988BABC19FB9F8800D87D9D /* SelLocView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988BABB19FB9F8800D87D9D /* SelLocView.xib */; };
 		8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */; };
@@ -40,6 +44,10 @@
 
 /* Begin PBXFileReference section */
 		2CF7094A1EB64969B6054528 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		890563341A010BC9003084A3 /* YBHLJLTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBHLJLTableViewController.swift; sourceTree = "<group>"; };
+		890563391A010DAF003084A3 /* HBCommView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HBCommView.xib; sourceTree = "<group>"; };
+		8905633B1A010DF5003084A3 /* HBCommView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBCommView.swift; sourceTree = "<group>"; };
+		8905633D1A011399003084A3 /* YBHLJLNavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBHLJLNavVC.swift; sourceTree = "<group>"; };
 		8912391419FFA4E200529C5C /* PatCodeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatCodeTableVC.swift; sourceTree = "<group>"; };
 		8988BABB19FB9F8800D87D9D /* SelLocView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelLocView.xib; sourceTree = "<group>"; };
 		8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTBarViewController.swift; sourceTree = "<group>"; };
@@ -85,10 +93,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		890563331A010B72003084A3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8912391419FFA4E200529C5C /* PatCodeTableVC.swift */,
+				890563341A010BC9003084A3 /* YBHLJLTableViewController.swift */,
+				8905633D1A011399003084A3 /* YBHLJLNavVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		890563381A010C9A003084A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		8988BABA19FB9F5A00D87D9D /* View */ = {
 			isa = PBXGroup;
 			children = (
 				8988BABB19FB9F8800D87D9D /* SelLocView.xib */,
+				890563391A010DAF003084A3 /* HBCommView.xib */,
+				8905633B1A010DF5003084A3 /* HBCommView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -116,6 +143,8 @@
 		89D5D5CE19F8CA1200304AE4 /* dhcnur */ = {
 			isa = PBXGroup;
 			children = (
+				890563381A010C9A003084A3 /* Model */,
+				890563331A010B72003084A3 /* Controller */,
 				8988BABA19FB9F5A00D87D9D /* View */,
 				89D5D5D119F8CA1200304AE4 /* AppDelegate.swift */,
 				89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */,
@@ -126,7 +155,6 @@
 				89D5D5D719F8CA1200304AE4 /* Main.storyboard */,
 				89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */,
 				8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */,
-				8912391419FFA4E200529C5C /* PatCodeTableVC.swift */,
 				89D5D5DA19F8CA1200304AE4 /* Images.xcassets */,
 				89E9B45E19FA8CF70087CB98 /* 2.gif */,
 				89E9B45C19FA8CF20087CB98 /* 1.gif */,
@@ -254,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8905633A1A010DAF003084A3 /* HBCommView.xib in Resources */,
 				89D5D5D919F8CA1200304AE4 /* Main.storyboard in Resources */,
 				89E9B45B19FA8CEC0087CB98 /* 0.gif in Resources */,
 				89D5D5DE19F8CA1200304AE4 /* LaunchScreen.xib in Resources */,
@@ -315,12 +344,15 @@
 				89D5D5D619F8CA1200304AE4 /* DetailViewController.swift in Sources */,
 				89CF9D3219FB32CD001658F3 /* LogonViewController.swift in Sources */,
 				89D5D5D419F8CA1200304AE4 /* MasterViewController.swift in Sources */,
+				8905633C1A010DF5003084A3 /* HBCommView.swift in Sources */,
 				89D5D5F519F8D5CA00304AE4 /* MyUISpitViewController.swift in Sources */,
 				89CF9D3619FB7716001658F3 /* SelectLocTableViewController.swift in Sources */,
 				8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */,
+				890563351A010BC9003084A3 /* YBHLJLTableViewController.swift in Sources */,
 				89D5D5D219F8CA1200304AE4 /* AppDelegate.swift in Sources */,
 				8912391519FFA4E200529C5C /* PatCodeTableVC.swift in Sources */,
 				89CF9D3419FB33CA001658F3 /* HttpUtil.swift in Sources */,
+				8905633E1A011399003084A3 /* YBHLJLNavVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

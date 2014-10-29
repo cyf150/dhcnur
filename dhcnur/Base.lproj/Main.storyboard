@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-661" y="131"/>
+            <point key="canvasLocation" x="261" y="135"/>
         </scene>
         <!--Title-->
         <scene sceneID="DIb-lL-bfQ">
@@ -124,21 +124,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="password" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3as-1w-C98">
-                                <rect key="frame" x="228" y="230" width="145" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="password_didend:" destination="wSB-f1-eRX" eventType="editingDidEnd" id="FNJ-2n-nNH"/>
-                                </connections>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP5-Jo-is8">
                                 <rect key="frame" x="143" y="240" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="username" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQB-cW-avT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="username" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="411" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQB-cW-avT">
                                 <rect key="frame" x="228" y="187" width="145" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="145" id="kMZ-pb-vPA"/>
@@ -196,6 +188,14 @@
                                     <action selector="Selectlogonloc:" destination="wSB-f1-eRX" eventType="touchUpInside" id="YAZ-3T-VHV"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="password" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3as-1w-C98">
+                                <rect key="frame" x="228" y="231" width="145" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="password_didend:" destination="wSB-f1-eRX" eventType="editingDidEnd" id="FNJ-2n-nNH"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.4464693137485779" green="1" blue="0.52648311772375489" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -335,7 +335,32 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R35-pe-IXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="313" y="-682"/>
+            <point key="canvasLocation" x="95" y="-644"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Neo-Tr-QEN">
+            <objects>
+                <tableViewController id="hEf-I0-pic" customClass="YBHLJLTableViewController" customModule="dhcnur" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="I9i-fI-XyZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="hEf-I0-pic" id="kbD-NR-EnZ"/>
+                            <outlet property="delegate" destination="hEf-I0-pic" id="eB2-ob-aEa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="gOj-kw-8Nw">
+                        <barButtonItem key="leftBarButtonItem" title="关闭" id="xR8-2a-iKO">
+                            <connections>
+                                <action selector="close:" destination="hEf-I0-pic" id="EsK-XG-g1c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U9q-Wa-qNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1431" y="-644"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -389,6 +414,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRx-iq-hPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-531" y="-1303"/>
+        </scene>
+        <!--NavVC-->
+        <scene sceneID="VoU-Da-AY7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NRX-1C-1Ll" customClass="YBHLJLNavVC" customModule="dhcnur" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LrW-P5-Gyg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hEf-I0-pic" kind="relationship" relationship="rootViewController" id="aXr-yu-xpr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9dt-wg-Yfs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="743" y="-639"/>
         </scene>
     </scenes>
     <resources>

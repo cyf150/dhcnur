@@ -1,32 +1,40 @@
 //
-//  MoreViewController.swift
+//  YBHLJLNavVC.swift
 //  dhcnur
 //
-//  Created by cyf on 14/10/25.
+//  Created by cyf on 14/10/29.
 //  Copyright (c) 2014年 cyf. All rights reserved.
 //
 
 import UIKit
 
-class MoreViewController: UIViewController {
+class YBHLJLNavVC: UINavigationController {
 
+    var EpisodeID:NSString?
+    var EmrCode:NSString?
+    var EmrCodeName:NSString?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = EmrCodeName!
+        var tbVC = YBHLJLTableViewController()
+        tbVC.EmrCode = EmrCode
+        tbVC.EpisodeID = EpisodeID
+        tbVC.EmrCodeName = EmrCodeName
+        self.navigationItem.title = EmrCodeName
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: nil, action: Selector("close"))
+        self.pushViewController(tbVC, animated: true)
         // Do any additional setup after loading the view.
     }
-
+    func close(){
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    @IBAction func cancel(sender: AnyObject) {
-        //var destvc = LogonViewController()
-        //showViewController(destvc, sender: nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
     /*
     // MARK: - Navigation
 

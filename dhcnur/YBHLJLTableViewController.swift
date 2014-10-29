@@ -1,44 +1,57 @@
 //
-//  PatCodeTableVC.swift
+//  YBHLJLTableViewController.swift
 //  dhcnur
 //
-//  Created by cyf on 14/10/28.
+//  Created by cyf on 14/10/29.
 //  Copyright (c) 2014年 cyf. All rights reserved.
 //
 
 import UIKit
 
-class PatCodeTableVC: UITableViewController {
+class YBHLJLTableViewController: UITableViewController {
 
-    var EpisodeID :NSString?
-    var logonloc :NSString?
-    var arr :NSArray?
+    var EpisodeID:NSString?
+    var EmrCode:NSString?
+    var EmrCodeName:NSString?
+    var arr:NSArray?
+    @IBAction func close(sender: AnyObject) {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getmenulist()
+        //self.navigationController?.title = EmrCodeName
+        self.navigationItem.title = EmrCodeName
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: nil, action: Selector("close"))
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        getmenulist()
+        self.tableView.registerNib(UINib(nibName: "HBCommView", bundle: nil)!, forCellReuseIdentifier: "HBCell")
+        
     }
+    func close(){
+        //self.navigationController?.
+    }
+    
     func getmenulist()
     {
-     var url = "http://10.56.32.87/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getemrcode&type=Method"
-        let param=["Adm":EpisodeID!,"Loc":logonloc!]
+        var url = "http://10.56.32.87/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getadmemrcodedata&type=Method"
+        let param=["Adm":EpisodeID!,"EmrCode":EmrCode!]
         HttpUtil().requestwithurlandparam(url, paramdic: param, CompletinonHander: {
-                 data in
-                 if let retdate = data as? NSObject {
-                    var strDIC = data as? NSArray
-                    self.arr = strDIC!
-                    self.tableView.reloadData()
-                    println(retdate)
-                }
-                else{
-                   println("error")
-                }
-           })
+            data in
+            if let retdate = data as? NSObject {
+                var strDIC = data as? NSArray
+                self.arr = strDIC!
+                self.tableView.reloadData()
+                println(retdate)
+            }
+            else{
+                println("error")
+            }
+        })
         
     }
 
@@ -52,62 +65,31 @@ class PatCodeTableVC: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        var num = 0
-        if let nu = arr?{
-          num = nu.count
-        }
-        return num
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         var num = 0
-        if let nu = arr?{
-            var obj = arr![section] as NSDictionary
-            var subnodobj = obj["subnod"] as NSArray
-            num = subnodobj.count
+        if let tmpnum = arr?{
+          num = tmpnum.count
         }
         
         return num
     }
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var title = ""
-        if let ti = arr?{
-            var obj = arr![section] as NSDictionary
-            title = obj["NodName"] as NSString
-        }
-       
-        return title
-    }
-    
-    
+  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    
-        let cell = tableView.dequeueReusableCellWithIdentifier("SubCell", forIndexPath: indexPath) as UITableViewCell
-        //let object = objects[indexPath.row] as NSDate
-        let obj = arr![indexPath.section] as NSDictionary
-        let subobj = obj["subnod"] as NSArray
-        let sub = subobj[indexPath.row] as NSDictionary
-        cell.textLabel?.text = sub["EmrCodeName"]?.description
-        cell.detailTextLabel?.text = sub["IfSaved"]?.description
-        cell.accessoryType = UITableViewCellAccessoryType.None
+        //let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("HBCell") as HBCommView
+        if let arro = arr?
+        {
+           cell.dataobj = arro[indexPath.row] as? NSDictionary
+        }
         return cell
-        
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let obj = arr![indexPath.section] as NSDictionary
-        let subobj = obj["subnod"] as NSArray
-        let sub = subobj[indexPath.row] as NSDictionary
-        let EmrCode = sub["EmrCode"] as NSString
-        let EmrCodeName = sub["EmrCodeName"]?.description
-        var destcontrol = YBHLJLNavVC()
-        destcontrol.EpisodeID = EpisodeID
-        destcontrol.EmrCode = EmrCode
-        destcontrol.EmrCodeName = EmrCodeName
-        showDetailViewController(destcontrol, sender: nil)
-    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

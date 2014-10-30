@@ -13,17 +13,22 @@ class YBHLJLNavVC: UINavigationController {
     var EpisodeID:NSString?
     var EmrCode:NSString?
     var EmrCodeName:NSString?
-    
+    var leftbarbutton:UIBarButtonItem?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = EmrCodeName!
+        self.title = EmrCodeName?
         var tbVC = YBHLJLTableViewController()
         tbVC.EmrCode = EmrCode
         tbVC.EpisodeID = EpisodeID
         tbVC.EmrCodeName = EmrCodeName
+        tbVC.leftbarbutton = leftbarbutton
         self.navigationItem.title = EmrCodeName
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: nil, action: Selector("close"))
-        self.pushViewController(tbVC, animated: true)
+        if let adm = EpisodeID?
+        {
+           self.pushViewController(tbVC, animated: true)
+        }
+        //self.topViewController.navigationItem.leftBarButtonItem =
         // Do any additional setup after loading the view.
     }
     func close(){

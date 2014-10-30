@@ -28,10 +28,10 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        //self.navigationItem.leftBarButtonItem = self.editButtonItem()
        
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        self.navigationItem.rightBarButtonItem = addButton
+        //self.navigationItem.rightBarButtonItem = addButton
         
         if let split = self.splitViewController {
             let controllers = split.viewControllers
@@ -113,9 +113,12 @@ class MasterViewController: UITableViewController {
                 let obj = arr[indexPath.row] as NSDictionary
                 let controller = segue.destinationViewController  as PatCodeTableVC
                 var adm = obj["EpisodeID"]?.description
-
+                var patname = obj["PatName"]?.description
+                var bedcode = obj["bedCode"]?.description
+                controller.uisplitvc = self.splitViewController as? MyUISpitViewController
                 controller.EpisodeID = adm
-                    controller.logonloc = logonloc
+                controller.logonloc = logonloc
+                controller.selectedpatname = patname! + " " + bedcode!
                 //controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 //controller.navigationItem.leftItemsSupplementBackButton = true
             }

@@ -13,9 +13,13 @@ class PatCodeTableVC: UITableViewController {
     var EpisodeID :NSString?
     var logonloc :NSString?
     var arr :NSArray?
+    var selectedcode:NSString?
+    var selectedcodename:NSString?
+    var selectedpatname:NSString?
+    var uisplitvc:MyUISpitViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.title = selectedpatname
         getmenulist()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -90,7 +94,15 @@ class PatCodeTableVC: UITableViewController {
         let subobj = obj["subnod"] as NSArray
         let sub = subobj[indexPath.row] as NSDictionary
         cell.textLabel?.text = sub["EmrCodeName"]?.description
-        cell.detailTextLabel?.text = sub["IfSaved"]?.description
+        cell.textLabel?.font = UIFont(name: "System.System", size: 15.0)
+        var ifsaved = sub["IfSaved"]?.description
+        cell.detailTextLabel?.text = ifsaved
+        if ifsaved != "" {
+          cell.textLabel?.textColor = UIColor.blueColor()
+        }
+        else{
+          cell.textLabel?.textColor = UIColor.redColor()
+        }
         cell.accessoryType = UITableViewCellAccessoryType.None
         return cell
         
@@ -105,8 +117,61 @@ class PatCodeTableVC: UITableViewController {
         var destcontrol = YBHLJLNavVC()
         destcontrol.EpisodeID = EpisodeID
         destcontrol.EmrCode = EmrCode
-        destcontrol.EmrCodeName = EmrCodeName
-        showDetailViewController(destcontrol, sender: nil)
+        destcontrol.EmrCodeName = EmrCodeName! + "(" + self.navigationItem.title! + ")"
+        selectedcode = EmrCode
+        selectedcodename = EmrCodeName
+        if let spvc = uisplitvc?{
+          var nv = spvc.displayModeButtonItem()
+            destcontrol.leftbarbutton = nv
+        }
+        var par1 = self.parentViewController
+        println(par1)
+        
+        showDetailViewController(destcontrol, sender: self)
+        
+    }
+   // override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
+   //     println(action.description)
+   //     var par = self.parentViewController as UINavigationController
+   //     var control = DetailViewController()
+   //     println(par)
+   //     return control
+   // }
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if let code = selectedcodename?
+        {
+            return true
+        }
+        else
+        {
+          return false
+        }
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let code = selectedcodename?
+        {
+        var dest = segue.destinationViewController as YBHLJLNavVC
+        dest.EmrCode = selectedcode
+        dest.EmrCodeName = selectedcodename
+        dest.EpisodeID = EpisodeID
+        }
+        else{
+          return
+        }
+           }
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+        var titlearr = [NSString]()
+        if let ti = arr?{
+            for itm in ti {
+                var obj = itm as NSDictionary
+                var title = obj["NodName"] as NSString
+                var range = NSRange(location: 0, length: 1)
+                var name = title.substringWithRange(range)
+                titlearr.append(name)
+                }
+                //titlearr.append(itmname)
+            }
+        return titlearr
     }
     /*
     // Override to support conditional editing of the table view.

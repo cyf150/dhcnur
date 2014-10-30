@@ -14,6 +14,7 @@ class YBHLJLTableViewController: UITableViewController {
     var EmrCode:NSString?
     var EmrCodeName:NSString?
     var arr:NSArray?
+    var leftbarbutton:UIBarButtonItem?
     @IBAction func close(sender: AnyObject) {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
         
@@ -22,14 +23,22 @@ class YBHLJLTableViewController: UITableViewController {
         super.viewDidLoad()
         //self.navigationController?.title = EmrCodeName
         self.navigationItem.title = EmrCodeName
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: nil, action: Selector("close"))
+        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: nil, action: Selector("close"))
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        getmenulist()
+        if let btn = leftbarbutton?{
+           self.navigationItem.leftBarButtonItem = leftbarbutton
+        }
+        if let adm = EpisodeID?
+        {
+           getmenulist()
+        }
         self.tableView.registerNib(UINib(nibName: "HBCommView", bundle: nil)!, forCellReuseIdentifier: "HBCell")
+        self.tableView.estimatedRowHeight = 100
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         
     }
     func close(){
@@ -88,7 +97,12 @@ class YBHLJLTableViewController: UITableViewController {
         }
         return cell
     }
-    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
+    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 150
+    }
 
     /*
     // Override to support conditional editing of the table view.

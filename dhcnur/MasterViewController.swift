@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController,UIPopoverPresentationControllerDelegate{
 
     var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
@@ -17,6 +17,7 @@ class MasterViewController: UITableViewController {
     var userid = ""
     var usergroup = ""
     var username = ""
+    var EpisodeID:NSString?
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -27,12 +28,32 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //self.navigationItem.leftBarButtonItem = self.editButtonItem()
-       
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        //self.navigationItem.rightBarButtonItem = addButton
         
+        if let loc = logonloc{
+            configuview()
+        }else{
+           // showlogonview()
+        }
+    }
+    override func viewWillAppear(animated: Bool) {
+        //showlogonview()
+    }
+    func showlogonview(){
+        var descon =  LogonViewController()
+        //descon.data = userlogonlocs
+        //descon.pVC = self
+        //descon.modalPresentationStyle = .Popover
+        
+        //let popovercontroller = self.popoverPresentationController
+        //popovercontroller?.sourceView = self.view
+        //popovercontroller?.sourceRect = self.view.frame
+        //popovercontroller?.permittedArrowDirections = .Any
+        //popovercontroller?.delegate = self
+        
+        showViewController(descon, sender: nil)
+    }
+
+       func configuview(){
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             var tbvc = split.viewControllers[0] as MasterTBarViewController
@@ -46,6 +67,7 @@ class MasterViewController: UITableViewController {
             getmenulist()
         }
         
+
     }
     func getmenulist()
     {
@@ -105,22 +127,46 @@ class MasterViewController: UITableViewController {
     }
 
     // MARK: - Segues
-
+    /*
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        var sel = tableView.indexPathForSelectedRow()
+        if let adm = EpisodeID{
+               return true
+        }
+        return false
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let obj = arr[indexPath.row] as NSDictionary
+        var ADM = obj["EpisodeID"]?.description
+        let newTable = storyboard?.instantiateViewControllerWithIdentifier("EmrCodeTB") as PatCodeTableVC
+        newTable.logonloc = logonloc
+        newTable.EpisodeID = ADM
+        newTable.uisplitvc = self.splitViewController?.viewControllers
+        showViewController(newTable, sender: self)
+    }
+*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "patemrcode" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-                //let object = objects[indexPath.row] as NSDate
+        if segue.identifier == "showDetail" {
+            var sel = tableView.indexPathForSelectedRow()
+            if let indexPath = sel{
                 let obj = arr[indexPath.row] as NSDictionary
-                let controller = segue.destinationViewController  as PatCodeTableVC
-                var adm = obj["EpisodeID"]?.description
-                var patname = obj["PatName"]?.description
-                var bedcode = obj["bedCode"]?.description
-                controller.uisplitvc = self.splitViewController as? MyUISpitViewController
-                controller.EpisodeID = adm
-                controller.logonloc = logonloc
-                controller.selectedpatname = patname! + " " + bedcode!
-                //controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                //controller.navigationItem.leftItemsSupplementBackButton = true
+                var ADM = obj["EpisodeID"]?.description
+                 var dest = segue.destinationViewController as PatCodeTableVC
+                dest.EpisodeID = ADM
+                dest.logonloc = logonloc
+                dest.uisplitvc = self.splitViewController!.viewControllers
+//            let obj = arr[indexPath.section] as NSDictionary
+//            let subobj = obj["subnod"] as NSArray
+//            let sub = subobj[indexPath.row] as NSDictionary
+//            let EmrCode = sub["EmrCode"]?.description
+//            let EmrCodeName = sub["EmrCodenName"]?.description
+//            var desttop = segue.destinationViewController as YBHLJLNavVC
+//            //var desttop = dest.topViewController as DetailViewController
+//            desttop.EmrCode = EmrCode
+//            desttop.EmrCodeName = EmrCodeName
+//            desttop.EpisodeID = EpisodeID
             }
         }
     }

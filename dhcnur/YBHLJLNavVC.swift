@@ -16,8 +16,9 @@ class YBHLJLNavVC: UINavigationController {
     var leftbarbutton:UIBarButtonItem?
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
         self.title = EmrCodeName?
-        var tbVC = YBHLJLTableViewController()
+        var tbVC = DetailViewController()
         tbVC.EmrCode = EmrCode
         tbVC.EpisodeID = EpisodeID
         tbVC.EmrCodeName = EmrCodeName
@@ -30,7 +31,19 @@ class YBHLJLNavVC: UINavigationController {
         }
         //self.topViewController.navigationItem.leftBarButtonItem =
         // Do any additional setup after loading the view.
+*/
     }
+    /*
+    override func showDetailViewController(vc: UIViewController, sender: AnyObject?) {
+        if let sp = self.splitViewController{
+            if self.splitViewController!.collapsed{
+               println(vc.description)
+            }else{
+               
+            }
+        }
+    }
+*/
     func close(){
         self.dismissViewControllerAnimated(true, completion: nil)
     }

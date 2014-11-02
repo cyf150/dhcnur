@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		890563351A010BC9003084A3 /* YBHLJLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890563341A010BC9003084A3 /* YBHLJLTableViewController.swift */; };
-		8905633A1A010DAF003084A3 /* HBCommView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890563391A010DAF003084A3 /* HBCommView.xib */; };
+		890563351A010BC9003084A3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890563341A010BC9003084A3 /* DetailViewController.swift */; };
 		8905633C1A010DF5003084A3 /* HBCommView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905633B1A010DF5003084A3 /* HBCommView.swift */; };
 		8905633E1A011399003084A3 /* YBHLJLNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905633D1A011399003084A3 /* YBHLJLNavVC.swift */; };
 		8912391519FFA4E200529C5C /* PatCodeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912391419FFA4E200529C5C /* PatCodeTableVC.swift */; };
+		8974830C1A06043F009D605B /* TraitOverrideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8974830B1A06043F009D605B /* TraitOverrideViewController.swift */; };
 		8988BABC19FB9F8800D87D9D /* SelLocView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988BABB19FB9F8800D87D9D /* SelLocView.xib */; };
 		8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */; };
 		8988BAC019FBD54200D87D9D /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8988BABF19FBD54200D87D9D /* MoreViewController.swift */; };
+		898D500D1A04A63B00C1B23A /* PatCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898D500C1A04A63B00C1B23A /* PatCodeTableViewCell.swift */; };
+		898D500F1A04F51100C1B23A /* PatCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898D500E1A04F51100C1B23A /* PatCodeTableViewCell.xib */; };
 		89CF9D3219FB32CD001658F3 /* LogonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF9D3119FB32CD001658F3 /* LogonViewController.swift */; };
 		89CF9D3419FB33CA001658F3 /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF9D3319FB33CA001658F3 /* HttpUtil.swift */; };
 		89CF9D3619FB7716001658F3 /* SelectLocTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */; };
 		89D5D5D219F8CA1200304AE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5D5D119F8CA1200304AE4 /* AppDelegate.swift */; };
 		89D5D5D419F8CA1200304AE4 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5D5D319F8CA1200304AE4 /* MasterViewController.swift */; };
-		89D5D5D619F8CA1200304AE4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5D5D519F8CA1200304AE4 /* DetailViewController.swift */; };
+		89D5D5D619F8CA1200304AE4 /* NoSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5D5D519F8CA1200304AE4 /* NoSelectViewController.swift */; };
 		89D5D5D919F8CA1200304AE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89D5D5D719F8CA1200304AE4 /* Main.storyboard */; };
 		89D5D5DB19F8CA1200304AE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89D5D5DA19F8CA1200304AE4 /* Images.xcassets */; };
 		89D5D5DE19F8CA1200304AE4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D5D5DC19F8CA1200304AE4 /* LaunchScreen.xib */; };
@@ -44,14 +46,16 @@
 
 /* Begin PBXFileReference section */
 		2CF7094A1EB64969B6054528 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		890563341A010BC9003084A3 /* YBHLJLTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBHLJLTableViewController.swift; sourceTree = "<group>"; };
-		890563391A010DAF003084A3 /* HBCommView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HBCommView.xib; sourceTree = "<group>"; };
+		890563341A010BC9003084A3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8905633B1A010DF5003084A3 /* HBCommView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBCommView.swift; sourceTree = "<group>"; };
 		8905633D1A011399003084A3 /* YBHLJLNavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBHLJLNavVC.swift; sourceTree = "<group>"; };
 		8912391419FFA4E200529C5C /* PatCodeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatCodeTableVC.swift; sourceTree = "<group>"; };
+		8974830B1A06043F009D605B /* TraitOverrideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitOverrideViewController.swift; sourceTree = "<group>"; };
 		8988BABB19FB9F8800D87D9D /* SelLocView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelLocView.xib; sourceTree = "<group>"; };
 		8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTBarViewController.swift; sourceTree = "<group>"; };
 		8988BABF19FBD54200D87D9D /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		898D500C1A04A63B00C1B23A /* PatCodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatCodeTableViewCell.swift; sourceTree = "<group>"; };
+		898D500E1A04F51100C1B23A /* PatCodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatCodeTableViewCell.xib; sourceTree = "<group>"; };
 		89CF9D3119FB32CD001658F3 /* LogonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogonViewController.swift; sourceTree = "<group>"; };
 		89CF9D3319FB33CA001658F3 /* HttpUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
 		89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocTableViewController.swift; sourceTree = "<group>"; };
@@ -59,7 +63,7 @@
 		89D5D5D019F8CA1200304AE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89D5D5D119F8CA1200304AE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89D5D5D319F8CA1200304AE4 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		89D5D5D519F8CA1200304AE4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		89D5D5D519F8CA1200304AE4 /* NoSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSelectViewController.swift; sourceTree = "<group>"; };
 		89D5D5D819F8CA1200304AE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89D5D5DA19F8CA1200304AE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		89D5D5DD19F8CA1200304AE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -97,8 +101,12 @@
 			isa = PBXGroup;
 			children = (
 				8912391419FFA4E200529C5C /* PatCodeTableVC.swift */,
-				890563341A010BC9003084A3 /* YBHLJLTableViewController.swift */,
+				890563341A010BC9003084A3 /* DetailViewController.swift */,
 				8905633D1A011399003084A3 /* YBHLJLNavVC.swift */,
+				89D5D5D319F8CA1200304AE4 /* MasterViewController.swift */,
+				8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */,
+				89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */,
+				8974830B1A06043F009D605B /* TraitOverrideViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -114,8 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				8988BABB19FB9F8800D87D9D /* SelLocView.xib */,
-				890563391A010DAF003084A3 /* HBCommView.xib */,
 				8905633B1A010DF5003084A3 /* HBCommView.swift */,
+				898D500C1A04A63B00C1B23A /* PatCodeTableViewCell.swift */,
+				898D500E1A04F51100C1B23A /* PatCodeTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -147,14 +156,11 @@
 				890563331A010B72003084A3 /* Controller */,
 				8988BABA19FB9F5A00D87D9D /* View */,
 				89D5D5D119F8CA1200304AE4 /* AppDelegate.swift */,
-				89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */,
-				89D5D5D319F8CA1200304AE4 /* MasterViewController.swift */,
-				89D5D5D519F8CA1200304AE4 /* DetailViewController.swift */,
+				89D5D5D519F8CA1200304AE4 /* NoSelectViewController.swift */,
 				89CF9D3119FB32CD001658F3 /* LogonViewController.swift */,
 				89CF9D3319FB33CA001658F3 /* HttpUtil.swift */,
 				89D5D5D719F8CA1200304AE4 /* Main.storyboard */,
 				89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */,
-				8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */,
 				89D5D5DA19F8CA1200304AE4 /* Images.xcassets */,
 				89E9B45E19FA8CF70087CB98 /* 2.gif */,
 				89E9B45C19FA8CF20087CB98 /* 1.gif */,
@@ -282,11 +288,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8905633A1A010DAF003084A3 /* HBCommView.xib in Resources */,
 				89D5D5D919F8CA1200304AE4 /* Main.storyboard in Resources */,
 				89E9B45B19FA8CEC0087CB98 /* 0.gif in Resources */,
 				89D5D5DE19F8CA1200304AE4 /* LaunchScreen.xib in Resources */,
 				89E9B45F19FA8CF70087CB98 /* 2.gif in Resources */,
+				898D500F1A04F51100C1B23A /* PatCodeTableViewCell.xib in Resources */,
 				89E9B45D19FA8CF20087CB98 /* 1.gif in Resources */,
 				8988BABC19FB9F8800D87D9D /* SelLocView.xib in Resources */,
 				89D5D5DB19F8CA1200304AE4 /* Images.xcassets in Resources */,
@@ -341,14 +347,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8988BAC019FBD54200D87D9D /* MoreViewController.swift in Sources */,
-				89D5D5D619F8CA1200304AE4 /* DetailViewController.swift in Sources */,
+				8974830C1A06043F009D605B /* TraitOverrideViewController.swift in Sources */,
+				89D5D5D619F8CA1200304AE4 /* NoSelectViewController.swift in Sources */,
 				89CF9D3219FB32CD001658F3 /* LogonViewController.swift in Sources */,
 				89D5D5D419F8CA1200304AE4 /* MasterViewController.swift in Sources */,
 				8905633C1A010DF5003084A3 /* HBCommView.swift in Sources */,
 				89D5D5F519F8D5CA00304AE4 /* MyUISpitViewController.swift in Sources */,
 				89CF9D3619FB7716001658F3 /* SelectLocTableViewController.swift in Sources */,
 				8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */,
-				890563351A010BC9003084A3 /* YBHLJLTableViewController.swift in Sources */,
+				898D500D1A04A63B00C1B23A /* PatCodeTableViewCell.swift in Sources */,
+				890563351A010BC9003084A3 /* DetailViewController.swift in Sources */,
 				89D5D5D219F8CA1200304AE4 /* AppDelegate.swift in Sources */,
 				8912391519FFA4E200529C5C /* PatCodeTableVC.swift in Sources */,
 				89CF9D3419FB33CA001658F3 /* HttpUtil.swift in Sources */,

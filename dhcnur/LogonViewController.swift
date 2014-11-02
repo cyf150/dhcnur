@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogonViewController: UIViewController,UIPopoverControllerDelegate,UIPopoverPresentationControllerDelegate {
+class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var sure: UIButton!
     @IBOutlet weak var username: UITextField!
@@ -66,16 +66,22 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate,UIPopove
         
         }
     }
-
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController!) -> UIModalPresentationStyle{
+      return UIModalPresentationStyle.None
+    }
+    
+    func presentationController(controller:UIPresentationController!,viewControllerForAdaptivePresentationStyle style:UIModalPresentationStyle)->UIViewController!{
+        let navVC = UINavigationController(rootViewController:controller.presentedViewController)
+        return navVC
+    }
        //logon
     @IBAction func btnsure(sender: UIView) {
         if let loc = logonloc? {
-           var descon = storyboard?.instantiateViewControllerWithIdentifier("spvc") as MyUISpitViewController  //MyUISpitViewController()
-           var vc = descon.viewControllers
-            //println(vc.count)
-           //var master = descon.viewControllers[0].topViewController as MasterViewController
-           descon.logonloc = loc
-           showViewController(descon, sender: nil)
+           var descon = storyboard?.instantiateViewControllerWithIdentifier("spvc") as MyUISpitViewController //TraitOverrideViewController  //MyUISpitViewController()
+            // var descon = storyboard?.instantiateViewControllerWithIdentifier("TraitVC") as TraitOverrideViewController
+             descon.logonloc = logonloc
+             showViewController(descon, sender: nil)
             //presentViewController(descon, animated: true, completion: nil)
         }
         else{

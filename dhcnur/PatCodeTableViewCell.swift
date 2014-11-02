@@ -1,31 +1,28 @@
 //
-//  HBCommView.swift
+//  PatCodeTableViewCell.swift
 //  dhcnur
 //
-//  Created by cyf on 14/10/29.
+//  Created by cyf on 14/11/1.
 //  Copyright (c) 2014年 cyf. All rights reserved.
 //
 
 import UIKit
 
-class HBCommView: UITableViewCell {
+class PatCodeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var CareDate: UILabel!
-    
-    @IBOutlet weak var CareTime: UILabel!
-    
+         @IBOutlet weak var caredate: UILabel!
+       @IBOutlet weak var CareTime: UILabel!
     @IBOutlet weak var CaseMeasure: UILabel!
-    
     @IBOutlet weak var User: UILabel!
     
-    var dataobj:NSDictionary? {
+    var celldata:NSDictionary?{
         didSet{
-            if let data = dataobj?{
-                self.CareDate.text = data["CareDate"]?.description
+            if let data = celldata{
+                self.caredate.text = data["CareDate"]?.description
                 self.CareTime.text = data["CareTime"]?.description
                 self.CaseMeasure.text = data["CaseMeasure"]?.description
                 self.User.text = data["User"]?.description
-            }
+                           }
         }
     }
     override func awakeFromNib() {
@@ -38,5 +35,5 @@ class HBCommView: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

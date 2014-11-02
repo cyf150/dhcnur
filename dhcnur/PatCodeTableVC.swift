@@ -16,11 +16,12 @@ class PatCodeTableVC: UITableViewController {
     var selectedcode:NSString?
     var selectedcodename:NSString?
     var selectedpatname:NSString?
-    var uisplitvc:MyUISpitViewController?
+    var uisplitvc:[AnyObject]?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = selectedpatname
         getmenulist()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -114,15 +115,33 @@ class PatCodeTableVC: UITableViewController {
         let sub = subobj[indexPath.row] as NSDictionary
         let EmrCode = sub["EmrCode"] as NSString
         let EmrCodeName = sub["EmrCodeName"]?.description
+        if let uisp = uisplitvc{
+           println(uisp.count)
+            if uisp.count == 1{
+               var tbar = uisp[0] as MasterTBarViewController
+               var targ = tbar.viewControllers
+                var sub = targ! as NSArray
+                var na = sub[0] as UINavigationController
+                println(na)
+                var destcontrol = DetailViewController()
+                destcontrol.EpisodeID = EpisodeID
+                destcontrol.EmrCode = EmrCode
+                destcontrol.EmrCodeName = EmrCodeName
+                //showViewController(destcontrol, sender: nil)
+                na.pushViewController(destcontrol, animated: true)
+                return
+            }
+        }
+        return
         var destcontrol = YBHLJLNavVC()
         destcontrol.EpisodeID = EpisodeID
         destcontrol.EmrCode = EmrCode
-        destcontrol.EmrCodeName = EmrCodeName! + "(" + self.navigationItem.title! + ")"
+        destcontrol.EmrCodeName = EmrCodeName
         selectedcode = EmrCode
         selectedcodename = EmrCodeName
         if let spvc = uisplitvc?{
-          var nv = spvc.displayModeButtonItem()
-            destcontrol.leftbarbutton = nv
+          //var nv = spvc.displayModeButtonItem()
+          //  destcontrol.leftbarbutton = nv
         }
         var par1 = self.parentViewController
         println(par1)
@@ -130,6 +149,7 @@ class PatCodeTableVC: UITableViewController {
         showDetailViewController(destcontrol, sender: self)
         
     }
+
    // override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
    //     println(action.description)
    //     var par = self.parentViewController as UINavigationController
@@ -137,27 +157,38 @@ class PatCodeTableVC: UITableViewController {
    //     println(par)
    //     return control
    // }
+  
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if let code = selectedcodename?
-        {
-            return true
+        var sel = tableView.indexPathForSelectedRow()
+        if let sp = self.uisplitvc{
+            if sp.count == 1{
+              
+                return false
+            }
         }
-        else
-        {
-          return false
-        }
+      
+        return true
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let code = selectedcodename?
-        {
-        var dest = segue.destinationViewController as YBHLJLNavVC
-        dest.EmrCode = selectedcode
-        dest.EmrCodeName = selectedcodename
-        dest.EpisodeID = EpisodeID
+        if segue.identifier == "showDetail"{
+            var sel = tableView.indexPathForSelectedRow()
+            if let indexPath = sel{
+                let obj = arr![indexPath.section] as NSDictionary
+                let subobj = obj["subnod"] as NSArray
+                let sub = subobj[indexPath.row] as NSDictionary
+                let EmrCode = sub["EmrCode"] as NSString
+                let EmrCodeName1 = sub["EmrCodeName"] as NSString
+               //var dest = segue.destinationViewController as UINavigationController
+               // var desttop = dest.topViewController as DetailViewController
+                var desttop = segue.destinationViewController.topViewController as DetailViewController
+                //var desttop = dest.topViewController as DetailViewController
+                desttop.EmrCode = EmrCode
+                desttop.EmrCodeName = EmrCodeName1
+                desttop.EpisodeID = EpisodeID
+
+            }
         }
-        else{
-          return
-        }
+     
            }
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         var titlearr = [NSString]()

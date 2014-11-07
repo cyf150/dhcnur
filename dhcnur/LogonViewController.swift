@@ -75,13 +75,21 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
         let navVC = UINavigationController(rootViewController:controller.presentedViewController)
         return navVC
     }
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if let logon = logonloc{
+          return true
+        }
+        else{
+          return false
+        }
+    }
        //logon
     @IBAction func btnsure(sender: UIView) {
         if let loc = logonloc? {
-           var descon = storyboard?.instantiateViewControllerWithIdentifier("spvc") as MyUISpitViewController //TraitOverrideViewController  //MyUISpitViewController()
-            // var descon = storyboard?.instantiateViewControllerWithIdentifier("TraitVC") as TraitOverrideViewController
-             descon.logonloc = logonloc
-             showViewController(descon, sender: nil)
+           //var descon = storyboard?.instantiateViewControllerWithIdentifier("spvc") as MyUISpitViewController //TraitOverrideViewController  //MyUISpitViewController()
+            //var descon = storyboard?.instantiateViewControllerWithIdentifier("TraitVC") as TraitOverrideViewController
+             //descon.logonloc = logonloc
+             //showViewController(descon, sender: nil)
             //presentViewController(descon, animated: true, completion: nil)
         }
         else{
@@ -110,7 +118,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
             data in
             if let retdate = data as? NSObject {
                 var strDIC = data as? NSDictionary
-                println(strDIC)
+                //println(strDIC)
                 if strDIC?.count > 0 {
                    self.logonuserid = strDIC?["UserID"] as? NSString
                     var errinfo = strDIC?["ErrorInfo"] as? NSString
@@ -155,7 +163,12 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
         })
         
     }
-    
+    func clearlogon(){
+      self.logonloc = nil
+      self.userlogonlocs = nil
+      //self.password.text = ""
+      self.selectloc.titleLabel?.text = ""
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -163,16 +176,13 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "success"{
-           if let loc = logonloc? {
-              segue.perform()
-            
-            }
-            else
-            {
-              logon()
-            }
-        }
+        var des = segue.destinationViewController as TraitOverrideViewController
+        //var mysp = des.childViewControllers[0] as MyUISpitViewController
+        //mysp.logonloc = self.logonloc
+        
+        des.logonloc = self.logonloc
+        des.logonobj = self
+        
         
         
     }

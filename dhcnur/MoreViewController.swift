@@ -25,7 +25,14 @@ class MoreViewController: UIViewController {
     @IBAction func cancel(sender: AnyObject) {
         //var destvc = LogonViewController()
         //showViewController(destvc, sender: nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        var main = self.splitViewController?.parentViewController?
+        self.dismissViewControllerAnimated(true, completion: {
+            var presing = self.presentingViewController
+            var mm = main! as TraitOverrideViewController
+            var pp = mm.logonobj
+            pp?.clearlogon()
+           println(mm.logonobj)
+        })
     }
     /*
     // MARK: - Navigation

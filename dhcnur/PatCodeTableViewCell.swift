@@ -18,10 +18,10 @@ class PatCodeTableViewCell: UITableViewCell {
     var celldata:NSDictionary?{
         didSet{
             if let data = celldata{
-                self.caredate.text = data["CareDate"]?.description
-                self.CareTime.text = data["CareTime"]?.description
-                self.CaseMeasure.text = data["CaseMeasure"]?.description
-                self.User.text = data["User"]?.description
+                self.caredate.text = data["CareDate"]!.description
+                self.CareTime.text = data["CareTime"]!.description
+                self.CaseMeasure.text = data["CaseMeasure"]!.description
+                self.User.text = data["User"]!.description
                            }
         }
     }

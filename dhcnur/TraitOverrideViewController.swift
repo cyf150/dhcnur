@@ -9,32 +9,40 @@
 import UIKit
 
 class TraitOverrideViewController: UIViewController {
-    var loc:NSString?
+    var logonloc:NSString?
+    var logonobj:LogonViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
-   
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showsp"{
-            var descon = storyboard?.instantiateViewControllerWithIdentifier("spvc") as MyUISpitViewController
-            descon.logonloc = loc
-              
-        }
+        //if segue.identifier == "showsp"{
+            var descon = segue.destinationViewController as MyUISpitViewController
+            descon.logonloc = logonloc
+        //
+        //}
     }
+    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         var traitOverride: UITraitCollection? = nil
         if size.width > 414 {
             traitOverride = UITraitCollection(horizontalSizeClass: .Regular)
+            setOverrideTraitCollection(traitOverride, forChildViewController: childViewControllers[0] as UIViewController)
         }
-        setOverrideTraitCollection(traitOverride, forChildViewController: childViewControllers[0] as UIViewController)
+        else{
+            traitOverride = UITraitCollection(horizontalSizeClass: .Compact)
+            setOverrideTraitCollection(nil, forChildViewController: childViewControllers[0] as UIViewController)
+        }
+       
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
+
 
     /*
     // MARK: - Navigation

@@ -8,29 +8,39 @@
 
 import UIKit
 
-class DetailViewController: UITableViewController {
+class DetailViewController: UITableViewController ,HLJLDisplayContainer{
 
+   
     var EpisodeID:NSString?
     var EmrCode:NSString?
     var EmrCodeName:NSString?
     var arr:NSArray?
     var leftbarbutton:UIBarButtonItem?
+    var PatName:NSString?
+   
     @IBAction func close(sender: AnyObject) {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
         
     }
+    
+    func dhc_currentDisplayedCode()-> NSString?{
+       return EmrCode
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 150
+        let nib = UINib(nibName:"PatCodeTableViewCell",bundle:nil)
+        tableView.registerNib(nib!, forCellReuseIdentifier:"YBCell")
+        println("viewdidload:")
         configureView()
-
+        //self.tableView.reloadData()
         
     }
     private func configureView(){
+        self.navigationItem.title = EmrCodeName
         if let adm = EmrCode{
             makeAllContentHidden(false)
-            self.tableView.estimatedRowHeight = 100
-            self.tableView.rowHeight = UITableViewAutomaticDimension
-            self.navigationItem.title = EmrCodeName
             if let btn = leftbarbutton?{
                 self.navigationItem.leftBarButtonItem = leftbarbutton
             }
@@ -38,8 +48,7 @@ class DetailViewController: UITableViewController {
             {
                 getmenulist()
             }
-            let nib = UINib(nibName:"PatCodeTableViewCell",bundle:nil)
-            tableView.registerNib(nib!, forCellReuseIdentifier:"YBCell")
+           
         }
         else{
             
@@ -53,7 +62,8 @@ class DetailViewController: UITableViewController {
    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        println(self.splitViewController)
+        
+        //println(self.splitViewController)
         if let svc = splitViewController {
             if !svc.collapsed {
                 navigationItem.setLeftBarButtonItem(svc.displayModeButtonItem(), animated: true)
@@ -86,7 +96,8 @@ class DetailViewController: UITableViewController {
                 if let dd = strDIC{
                     self.arr = strDIC!
                     self.tableView.reloadData()
-                    println(retdate)
+                    //self.tableView.reloadData()
+                    //println(retdate)
                 }
             }
             else{
@@ -127,12 +138,12 @@ class DetailViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
         //let cell = tableView.dequeueReusableCellWithIdentifier("HBCell") as HBCommView
-        let cell =  tableView.dequeueReusableCellWithIdentifier("YBCell", forIndexPath: indexPath) as PatCodeTableViewCell
+        let cell =  tableView.dequeueReusableCellWithIdentifier("YBCell", forIndexPath: indexPath) as? PatCodeTableViewCell
         if let arro = arr?
         {
-           cell.celldata = arro[indexPath.row] as? NSDictionary
+           cell!.celldata = arro[indexPath.row] as? NSDictionary
         }
-        return cell
+        return cell!
     }
   
 

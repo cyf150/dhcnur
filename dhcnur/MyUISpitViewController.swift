@@ -17,18 +17,23 @@ class MyUISpitViewController: UISplitViewController,UISplitViewControllerDelegat
               println(sp.collapsed)
             }
             self.delegate=self
-            var ma = self.viewControllers[0] as MasterTBarViewController
-            ma.tblogonloc = logonloc
-            var firstabs = ma.viewControllers!
-            println(firstabs)
-            var firstab = firstabs[0].topViewController as MasterViewController
-            firstab.logonloc = logonloc
+            var ma = self.viewControllers[0] as? MasterTBarViewController
+            if let mater = ma{
+                mater.tblogonloc = self.logonloc
+                //ma.tblogonloc = logonloc
+                var firstabs = mater.viewControllers!
+                //println(firstabs)
+                var firstab = firstabs[0].topViewController as MasterViewController
+                firstab.logonloc = logonloc
+            }
+            
+           
             presentsWithGesture = true
             preferredPrimaryColumnWidthFraction = 0.3
             preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
             //let navigationController = self.viewControllers[self.viewControllers.count-1] as UINavigationController
-            let navigationController = self.viewControllers[self.viewControllers.count-1] as YBHLJLNavVC
-            navigationController.topViewController.navigationItem.leftBarButtonItem = self.displayModeButtonItem()
+           // let navigationController = self.viewControllers[self.viewControllers.count-1] as NavigationController
+           // navigationController.topViewController.navigationItem.leftBarButtonItem = self.displayModeButtonItem()
 
         }else{
          // configuview()
@@ -43,8 +48,8 @@ class MyUISpitViewController: UISplitViewController,UISplitViewControllerDelegat
     
     func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
         println(displayMode)
-        let navigationController = self.viewControllers[self.viewControllers.count-1] as YBHLJLNavVC
-        navigationController.topViewController.navigationItem.leftBarButtonItem = self.displayModeButtonItem()
+        //let navigationController = self.viewControllers[self.viewControllers.count-1] as NavigationController
+        //navigationController.topViewController.navigationItem.leftBarButtonItem = self.displayModeButtonItem()
     }
     private func configuview(){
         var descon =  LogonViewController()
@@ -61,6 +66,61 @@ class MyUISpitViewController: UISplitViewController,UISplitViewControllerDelegat
         
         presentViewController(descon, animated: true, completion: nil)
 
+    }
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool {
+        if let nav = secondaryViewController as? NavigationController{
+            if let secon = nav.topViewController as? DetailViewController{
+                if let prima = primaryViewController as? HLJLDisplayContainer{
+                   var ret = prima.pro_ifspmastervcneedpush!()
+                    if let first = ret{
+                        first.pushViewController(secon, animated: true)
+                        return true
+                    }
+                }
+            
+            }
+                /*
+                if let mainvc = primaryViewController as? HLJLDisplayContainer{
+                    var mainsel = mainvc.dhc_currentDisplayedCode()
+                    if mainsel != nil{
+                        if mainsel == tvc.dhc_currentDisplayedCode(){
+                            var maintopvc = mainvc.dhc_mastercontrollertopVC!()
+                            if  maintopvc != nil {
+                                maintopvc?.pushViewController(secondaryViewController, animated: true)
+                            }
+                            
+                            return true
+                        }
+                    }
+                }
+               */
+            
+        }
+        
+        return false
+    }
+    func splitViewController(splitViewController: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController!) -> UIViewController? {
+        
+        if let vc = primaryViewController as? HLJLDisplayContainer{
+            var primaryret = vc.pro_ifspmastervcneedseperate!()
+            if let secondevc = primaryret {
+                var nav = NavigationController()
+                nav.pushViewController(secondevc, animated: true)
+                return nav
+            }
+            /*
+            if vc.dhc_currentDisplayedCode() != nil{
+               var secondvc = vc.dhc_mastercontrollertopVC!()!.topViewController
+                if let  sel = vc.dhc_masterselectvc!() as? NavigationController{
+                   sel.popViewControllerAnimated(false)
+                }
+                var nav = NavigationController()
+                nav.pushViewController(secondvc, animated: true)
+                return nav            }
+        }
+        */
+        }
+        return nil
     }
     /*
     override func showDetailViewController(vc: UIViewController!, sender: AnyObject!) {

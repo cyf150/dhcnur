@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PatCodeTableVC: UITableViewController {
+class PatCodeTableVC: UITableViewController ,HLJLDisplayContainer{
 
     var EpisodeID :NSString?
     var logonloc :NSString?
@@ -17,9 +17,14 @@ class PatCodeTableVC: UITableViewController {
     var selectedcodename:NSString?
     var selectedpatname:NSString?
     var uisplitvc:[AnyObject]?
+    var selectedemrcode:NSString?
+    var PatName:NSString?
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 31
         self.navigationItem.title = selectedpatname
+        println("PatCodeTableVC--")
+        println(self.traitCollection.horizontalSizeClass.hashValue)
         getmenulist()
         
         // Uncomment the following line to preserve selection between presentations
@@ -27,6 +32,9 @@ class PatCodeTableVC: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    func  dhc_currentDisplayedCode() -> NSString? {
+        return selectedemrcode
     }
     func getmenulist()
     {
@@ -38,7 +46,7 @@ class PatCodeTableVC: UITableViewController {
                     var strDIC = data as? NSArray
                     self.arr = strDIC!
                     self.tableView.reloadData()
-                    println(retdate)
+                    //println(retdate)
                 }
                 else{
                    println("error")
@@ -95,7 +103,7 @@ class PatCodeTableVC: UITableViewController {
         let subobj = obj["subnod"] as NSArray
         let sub = subobj[indexPath.row] as NSDictionary
         cell.textLabel?.text = sub["EmrCodeName"]?.description
-        cell.textLabel?.font = UIFont(name: "System.System", size: 15.0)
+        cell.textLabel?.font = UIFont(name: "System.System", size: 12.0)
         var ifsaved = sub["IfSaved"]?.description
         cell.detailTextLabel?.text = ifsaved
         if ifsaved != "" {
@@ -110,44 +118,28 @@ class PatCodeTableVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let obj = arr![indexPath.section] as NSDictionary
-        let subobj = obj["subnod"] as NSArray
-        let sub = subobj[indexPath.row] as NSDictionary
-        let EmrCode = sub["EmrCode"] as NSString
-        let EmrCodeName = sub["EmrCodeName"]?.description
-        if let uisp = uisplitvc{
-           println(uisp.count)
-            if uisp.count == 1{
-               var tbar = uisp[0] as MasterTBarViewController
-               var targ = tbar.viewControllers
-                var sub = targ! as NSArray
-                var na = sub[0] as UINavigationController
-                println(na)
-                var destcontrol = DetailViewController()
-                destcontrol.EpisodeID = EpisodeID
-                destcontrol.EmrCode = EmrCode
-                destcontrol.EmrCodeName = EmrCodeName
-                //showViewController(destcontrol, sender: nil)
-                na.pushViewController(destcontrol, animated: true)
-                return
+        if let sp = self.splitViewController {
+            let obj = arr![indexPath.section] as NSDictionary
+            let subobj = obj["subnod"] as NSArray
+            let sub = subobj[indexPath.row] as NSDictionary
+            let EmrCode = sub["EmrCode"] as NSString
+            let EmrCodeName = sub["EmrCodeName"]?.description
+            var destcontrol = DetailViewController()
+            destcontrol.EpisodeID = EpisodeID
+            destcontrol.EmrCode = EmrCode
+            destcontrol.EmrCodeName = EmrCodeName
+           if sp.collapsed{
+                          //showViewController(destcontrol, sender: nil)
+             var parat = self.parentViewController as NavigationController
+             parat.pushViewController(destcontrol, animated: true)
+           }else{
+              let nav = NavigationController()
+              nav.pushViewController(destcontrol, animated: true)
+              nav.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+              showDetailViewController(nav, sender: nil)
+            
             }
         }
-        return
-        var destcontrol = YBHLJLNavVC()
-        destcontrol.EpisodeID = EpisodeID
-        destcontrol.EmrCode = EmrCode
-        destcontrol.EmrCodeName = EmrCodeName
-        selectedcode = EmrCode
-        selectedcodename = EmrCodeName
-        if let spvc = uisplitvc?{
-          //var nv = spvc.displayModeButtonItem()
-          //  destcontrol.leftbarbutton = nv
-        }
-        var par1 = self.parentViewController
-        println(par1)
-        
-        showDetailViewController(destcontrol, sender: self)
-        
     }
 
    // override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
@@ -157,13 +149,13 @@ class PatCodeTableVC: UITableViewController {
    //     println(par)
    //     return control
    // }
-  
+   /*
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         var sel = tableView.indexPathForSelectedRow()
-        if let sp = self.uisplitvc{
-            if sp.count == 1{
-              
-                return false
+        var trait = self.traitCollection.horizontalSizeClass
+        if let sp = self.splitViewController {
+            if sp.collapsed{
+               return false
             }
         }
       
@@ -177,19 +169,23 @@ class PatCodeTableVC: UITableViewController {
                 let subobj = obj["subnod"] as NSArray
                 let sub = subobj[indexPath.row] as NSDictionary
                 let EmrCode = sub["EmrCode"] as NSString
-                let EmrCodeName1 = sub["EmrCodeName"] as NSString
-               //var dest = segue.destinationViewController as UINavigationController
+                let EmrCodeName1 = sub["EmrCodeName"]!.description
+                //var dest = segue.destinationViewController as UINavigationController
                // var desttop = dest.topViewController as DetailViewController
                 var desttop = segue.destinationViewController.topViewController as DetailViewController
                 //var desttop = dest.topViewController as DetailViewController
                 desttop.EmrCode = EmrCode
-                desttop.EmrCodeName = EmrCodeName1
+                desttop.EmrCodeName = EmrCodeName1 + "(" + PatName! + ")"
                 desttop.EpisodeID = EpisodeID
+                selectedemrcode = EmrCode
+                //desttop.tableview.estimatedRowHeight = 100
+                //desttop.tableview.rowHeight = UITableViewAutomaticDimension
 
             }
         }
-     
+
            }
+*/
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         var titlearr = [NSString]()
         if let ti = arr?{
@@ -204,6 +200,11 @@ class PatCodeTableVC: UITableViewController {
             }
         return titlearr
     }
+    
+       override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

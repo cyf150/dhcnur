@@ -11,6 +11,7 @@
 		8905633C1A010DF5003084A3 /* HBCommView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905633B1A010DF5003084A3 /* HBCommView.swift */; };
 		8905633E1A011399003084A3 /* YBHLJLNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905633D1A011399003084A3 /* YBHLJLNavVC.swift */; };
 		8912391519FFA4E200529C5C /* PatCodeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912391419FFA4E200529C5C /* PatCodeTableVC.swift */; };
+		897389C71A09D0A100D49934 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897389C61A09D0A100D49934 /* NavigationController.swift */; };
 		8974830C1A06043F009D605B /* TraitOverrideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8974830B1A06043F009D605B /* TraitOverrideViewController.swift */; };
 		8988BABC19FB9F8800D87D9D /* SelLocView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988BABB19FB9F8800D87D9D /* SelLocView.xib */; };
 		8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */; };
@@ -28,6 +29,7 @@
 		89D5D5DE19F8CA1200304AE4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D5D5DC19F8CA1200304AE4 /* LaunchScreen.xib */; };
 		89D5D5EA19F8CA1200304AE4 /* dhcnurTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5D5E919F8CA1200304AE4 /* dhcnurTests.swift */; };
 		89D5D5F519F8D5CA00304AE4 /* MyUISpitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */; };
+		89DB593A1A09D30200916386 /* HLJLContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DB59391A09D30200916386 /* HLJLContainer.swift */; };
 		89E9B45B19FA8CEC0087CB98 /* 0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 89E9B45A19FA8CEC0087CB98 /* 0.gif */; };
 		89E9B45D19FA8CF20087CB98 /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 89E9B45C19FA8CF20087CB98 /* 1.gif */; };
 		89E9B45F19FA8CF70087CB98 /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 89E9B45E19FA8CF70087CB98 /* 2.gif */; };
@@ -50,6 +52,7 @@
 		8905633B1A010DF5003084A3 /* HBCommView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBCommView.swift; sourceTree = "<group>"; };
 		8905633D1A011399003084A3 /* YBHLJLNavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBHLJLNavVC.swift; sourceTree = "<group>"; };
 		8912391419FFA4E200529C5C /* PatCodeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatCodeTableVC.swift; sourceTree = "<group>"; };
+		897389C61A09D0A100D49934 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		8974830B1A06043F009D605B /* TraitOverrideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitOverrideViewController.swift; sourceTree = "<group>"; };
 		8988BABB19FB9F8800D87D9D /* SelLocView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelLocView.xib; sourceTree = "<group>"; };
 		8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTBarViewController.swift; sourceTree = "<group>"; };
@@ -72,9 +75,10 @@
 		89D5D5E919F8CA1200304AE4 /* dhcnurTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dhcnurTests.swift; sourceTree = "<group>"; };
 		89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUISpitViewController.swift; sourceTree = "<group>"; };
 		89D5D5F819F9110A00304AE4 /* dhcnurBridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dhcnurBridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		89E9B45A19FA8CEC0087CB98 /* 0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 0.gif; path = "../../../../../../Volumes/VMware Shared Folders/Mac10共享文件/Image/light/0.gif"; sourceTree = "<group>"; };
-		89E9B45C19FA8CF20087CB98 /* 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 1.gif; path = "../../../../../../Volumes/VMware Shared Folders/Mac10共享文件/Image/light/1.gif"; sourceTree = "<group>"; };
-		89E9B45E19FA8CF70087CB98 /* 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 2.gif; path = "../../../../../../Volumes/VMware Shared Folders/Mac10共享文件/Image/light/2.gif"; sourceTree = "<group>"; };
+		89DB59391A09D30200916386 /* HLJLContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLJLContainer.swift; sourceTree = "<group>"; };
+		89E9B45A19FA8CEC0087CB98 /* 0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 0.gif; path = "/Volumes/VMware Shared Folders/Mac10共享文件/Image/light/0.gif"; sourceTree = "<absolute>"; };
+		89E9B45C19FA8CF20087CB98 /* 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 1.gif; path = "/Volumes/VMware Shared Folders/Mac10共享文件/Image/light/1.gif"; sourceTree = "<absolute>"; };
+		89E9B45E19FA8CF70087CB98 /* 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 2.gif; path = "/Volumes/VMware Shared Folders/Mac10共享文件/Image/light/2.gif"; sourceTree = "<absolute>"; };
 		A87C75679D70454497565745 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +111,11 @@
 				8988BABD19FBCF2000D87D9D /* MasterTBarViewController.swift */,
 				89D5D5F419F8D5CA00304AE4 /* MyUISpitViewController.swift */,
 				8974830B1A06043F009D605B /* TraitOverrideViewController.swift */,
+				89CF9D3119FB32CD001658F3 /* LogonViewController.swift */,
+				89D5D5D519F8CA1200304AE4 /* NoSelectViewController.swift */,
+				89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */,
+				897389C61A09D0A100D49934 /* NavigationController.swift */,
+				8988BABF19FBD54200D87D9D /* MoreViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -121,12 +130,21 @@
 		8988BABA19FB9F5A00D87D9D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				89D5D5DC19F8CA1200304AE4 /* LaunchScreen.xib */,
 				8988BABB19FB9F8800D87D9D /* SelLocView.xib */,
 				8905633B1A010DF5003084A3 /* HBCommView.swift */,
 				898D500C1A04A63B00C1B23A /* PatCodeTableViewCell.swift */,
 				898D500E1A04F51100C1B23A /* PatCodeTableViewCell.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		89BD45121A07B26500A3B57E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				89CF9D3319FB33CA001658F3 /* HttpUtil.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		89D5D5C319F8CA1200304AE4 = {
@@ -152,23 +170,17 @@
 		89D5D5CE19F8CA1200304AE4 /* dhcnur */ = {
 			isa = PBXGroup;
 			children = (
+				89DB59381A09D2C100916386 /* Protocols */,
+				89BD45121A07B26500A3B57E /* Util */,
 				890563381A010C9A003084A3 /* Model */,
 				890563331A010B72003084A3 /* Controller */,
 				8988BABA19FB9F5A00D87D9D /* View */,
-				89D5D5D119F8CA1200304AE4 /* AppDelegate.swift */,
-				89D5D5D519F8CA1200304AE4 /* NoSelectViewController.swift */,
-				89CF9D3119FB32CD001658F3 /* LogonViewController.swift */,
-				89CF9D3319FB33CA001658F3 /* HttpUtil.swift */,
+				89DB593B1A09F85D00916386 /* image */,
 				89D5D5D719F8CA1200304AE4 /* Main.storyboard */,
-				89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */,
+				89D5D5D119F8CA1200304AE4 /* AppDelegate.swift */,
 				89D5D5DA19F8CA1200304AE4 /* Images.xcassets */,
-				89E9B45E19FA8CF70087CB98 /* 2.gif */,
-				89E9B45C19FA8CF20087CB98 /* 1.gif */,
-				89E9B45A19FA8CEC0087CB98 /* 0.gif */,
-				89D5D5DC19F8CA1200304AE4 /* LaunchScreen.xib */,
 				89D5D5F819F9110A00304AE4 /* dhcnurBridging-Header.h */,
 				89D5D5CF19F8CA1200304AE4 /* Supporting Files */,
-				8988BABF19FBD54200D87D9D /* MoreViewController.swift */,
 			);
 			path = dhcnur;
 			sourceTree = "<group>";
@@ -196,6 +208,24 @@
 				89D5D5E819F8CA1200304AE4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		89DB59381A09D2C100916386 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				89DB59391A09D30200916386 /* HLJLContainer.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		89DB593B1A09F85D00916386 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				89E9B45A19FA8CEC0087CB98 /* 0.gif */,
+				89E9B45C19FA8CF20087CB98 /* 1.gif */,
+				89E9B45E19FA8CF70087CB98 /* 2.gif */,
+			);
+			name = image;
 			sourceTree = "<group>";
 		};
 		D0B7177966C44137A3F5B9E8 /* Frameworks */ = {
@@ -355,6 +385,8 @@
 				89D5D5F519F8D5CA00304AE4 /* MyUISpitViewController.swift in Sources */,
 				89CF9D3619FB7716001658F3 /* SelectLocTableViewController.swift in Sources */,
 				8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */,
+				897389C71A09D0A100D49934 /* NavigationController.swift in Sources */,
+				89DB593A1A09D30200916386 /* HLJLContainer.swift in Sources */,
 				898D500D1A04A63B00C1B23A /* PatCodeTableViewCell.swift in Sources */,
 				890563351A010BC9003084A3 /* DetailViewController.swift in Sources */,
 				89D5D5D219F8CA1200304AE4 /* AppDelegate.swift in Sources */,

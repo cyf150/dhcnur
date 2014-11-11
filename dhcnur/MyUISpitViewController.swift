@@ -23,8 +23,11 @@ class MyUISpitViewController: UISplitViewController,UISplitViewControllerDelegat
                 //ma.tblogonloc = logonloc
                 var firstabs = mater.viewControllers!
                 //println(firstabs)
-                var firstab = firstabs[0].topViewController as MasterViewController
-                firstab.logonloc = logonloc
+                //var firstab = firstabs[0].topViewController as? MasterViewController //MainViewController
+                var firstab = firstabs[0].topViewController as? MainViewController
+                if let master = firstab{
+                    master.logonloc = logonloc
+                }
             }
             
            

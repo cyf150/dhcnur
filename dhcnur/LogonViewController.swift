@@ -7,20 +7,13 @@
 //
 
 import UIKit
-
 class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var sure: UIButton!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var selectloc: UIButton!
-    var userlogonlocs:NSArray?
-    var logonloc: NSString?
-    var logonlocdesc:NSString?
-    var logonuserid:NSString?
-    var logongroup:NSString?
-    var logonward:NSString?
-    
+    var logoninfo : LogUser?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,10 +42,10 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
         UIApplication.sharedApplication().sendAction(Selector("resignFirstResponder"), to: nil, from: nil, forEvent: nil)
     }
     @IBAction func Selectlogonloc(sender: UIView) {
-        if let loc = userlogonlocs? {
+        if let loc = logoninfo? {
             //var descon = storyboard?.instantiateViewControllerWithIdentifier("SelectLocT") as UITableViewController
             var descon =  SelectLocTableViewController()
-            descon.data = userlogonlocs
+            descon.data = logoninfo?.LocArray
             descon.pVC = self
             descon.modalPresentationStyle = .Popover
             let popovercontroller = descon.popoverPresentationController
@@ -76,7 +69,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
         return navVC
     }
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if let logon = logonloc{
+        if let logon = logoninfo{
           return true
         }
         else{
@@ -85,7 +78,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
     }
        //logon
     @IBAction func btnsure(sender: UIView) {
-        if let loc = logonloc? {
+        if let loc = logoninfo? {
            //var descon = storyboard?.instantiateViewControllerWithIdentifier("spvc") as MyUISpitViewController //TraitOverrideViewController  //MyUISpitViewController()
             //var descon = storyboard?.instantiateViewControllerWithIdentifier("TraitVC") as TraitOverrideViewController
              //descon.logonloc = logonloc
@@ -103,12 +96,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
         var pass = password.text!
         if (usern == "")||(pass == "")
         {
-            let alert = UIAlertController(title: "", message: "用户名或密码不能为空！", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "OK", style: .Default) {
-                [weak alert] action in
-                alert!.dismissViewControllerAnimated(true, completion: nil)
-            }
-            alert.addAction(okAction)
+            let alert = UtilAlert().CommAlert("用户名或密码不能为空！")
             presentViewController(alert, animated: true, completion: nil)
             return
         }
@@ -120,26 +108,32 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
                 var strDIC = data as? NSDictionary
                 //println(strDIC)
                 if strDIC?.count > 0 {
-                   self.logonuserid = strDIC?["UserID"] as? NSString
-                    var errinfo = strDIC?["ErrorInfo"] as? NSString
+                   let loguser = strDIC?["UserID"]?.description
+                    var errinfo = strDIC?["ErrorInfo"]?.description
                     if (errinfo? != ""){
-                        let alerterr = UIAlertController(title: "", message: errinfo, preferredStyle: .Alert)
-                        let okAction = UIAlertAction(title: "OK", style: .Default) {
-                            [weak alerterr] action in
-                            alerterr!.dismissViewControllerAnimated(true, completion: nil)
-                            
-                        }
-                        alerterr.addAction(okAction)
-                        self.presentViewController(alerterr, animated: true, completion: nil)
+                        let alert = UtilAlert().CommAlert(errinfo!)
+                        self.presentViewController(alert, animated: true, completion: nil)
                         return
                     }
-                   self.userlogonlocs = strDIC?["Locs"] as? NSArray
-                   if self.userlogonlocs?.count>0 {
-                      var firstdic = self.userlogonlocs?[0] as NSDictionary
+                   let locarr = strDIC?["Locs"] as? NSArray
+                   if locarr?.count>0 {
+                      var firstdic = locarr?[0] as NSDictionary
                       self.selectloc.titleLabel?.text = firstdic["LocDesc"] as NSString
-                      self.logonloc = firstdic["LocID"]?.description
-                      self.logongroup = firstdic["GroupID"]?.description
-                      self.logonward = firstdic["WardID"]?.description
+                      if let obj = self.logoninfo{
+                       
+                    }else{
+                        self.logoninfo = LogUser()
+                    }
+                      self.logoninfo?.UserName = self.username.text
+                      self.logoninfo?.UserId = loguser
+                      self.logoninfo?.Password = self.password.text
+                      self.logoninfo?.LogonLoc = firstdic["LocID"]?.description
+                      self.logoninfo?.LogonLocDesc = firstdic["LocDesc"]?.description
+                      self.logoninfo?.UserGroup = firstdic["GroupID"]?.description
+                      self.logoninfo?.Wardid = firstdic["WardID"]?.description
+                      self.logoninfo?.UserGroupDesc = firstdic["GroupDesc"]?.description
+                      self.logoninfo?.LocArray = locarr!
+                    
                     }
                    
                }
@@ -150,22 +144,15 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
                 
             }
             else{
-                //println("error")
-                let alerterr = UIAlertController(title: "", message: "用户名或密码不能为空！", preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "OK", style: .Default) {
-                    [weak alerterr] action in
-                    alerterr!.dismissViewControllerAnimated(true, completion: nil)
-                }
-                alerterr.addAction(okAction)
-                self.presentViewController(alerterr, animated: true, completion: nil)
+                let alert = UtilAlert().CommAlert("用户名或密码不能为空！")
+                self.presentViewController(alert, animated: true, completion: nil)
 
             }
         })
         
     }
     func clearlogon(){
-      self.logonloc = nil
-      self.userlogonlocs = nil
+       self.logoninfo = nil
       //self.password.text = ""
       self.selectloc.titleLabel?.text = ""
     }
@@ -180,7 +167,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
         //var mysp = des.childViewControllers[0] as MyUISpitViewController
         //mysp.logonloc = self.logonloc
         
-        des.logonloc = self.logonloc
+        des.logonloc = self.logoninfo?.LogonLoc
         des.logonobj = self
         
         

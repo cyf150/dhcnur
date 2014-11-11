@@ -10,6 +10,7 @@ import UIKit
 
 class MasterViewController: UITableViewController,UIPopoverPresentationControllerDelegate,HLJLDisplayContainer{
 
+    @IBOutlet weak var segment: UISegmentedControl!
     var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
     var arr :NSArray = NSArray()
@@ -18,10 +19,53 @@ class MasterViewController: UITableViewController,UIPopoverPresentationControlle
     var usergroup = ""
     var username = ""
     var EpisodeID:NSString?
+    var backtableview:UITableView?
+    
+    @IBAction func segmentswitch(sender: UISegmentedControl) {
+        var childvc = self.childViewControllers as NSArray
+        var firstvc = self.tableView  //childvc[0] as? MasterViewController
+        var sencondevc = childvc[0] as? PatCollectionViewController
+        if sender.selectedSegmentIndex == 1{
+            //hideContentController(firstvc)
+            //tableView.removeFromSuperview()
+            //self.view.addSubview(sencondevc!.view)
+            //self.view.insertSubview(sencondevc!.view, aboveSubview: tableView)
+            
+            //self.view.inputView(sencondevc!.view as UIView)
+            //backtableview = self.tableView
+            self.tableView.hidden = true
+            //self.view.insertSubview(sencondevc!.view, atIndex: 0)
+            self.addChildViewController(sencondevc!)
+           // tableView.removeFromSuperview()
+        }else{
+            //hideContentController(sencondevc!)
+            //displayContentController(firstvc)
+            self.tableView.hidden = false
+            //sencondevc!.view.removeFromSuperview()
+            //self.view.addSubview(backtableview!)
+            //self.view.insertSubview(backtableview!, atIndex: 0)
+        }
+
+        
+    }
+    func displayContentController(content:UIViewController){
+        //self.addChildViewController(content)
+        self.view.addSubview(content.view)
+        //content.view.frame = self
+    }
+    func hideContentController(content:UIViewController){
+        //content.willMoveToParentViewController(self)
+        content.view.removeFromSuperview()
+        //content.removeFromParentViewController()
+        
+    }
+
     
     @IBAction func switclistview(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
            self.tableView.reloadData()
+        }else{
+           
         }
     }
     override func awakeFromNib() {
@@ -36,29 +80,21 @@ class MasterViewController: UITableViewController,UIPopoverPresentationControlle
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        var par = self.parentViewController
+        var sp = self.splitViewController
+        if let mysp = sp{
+            let mysplit = mysp as MyUISpitViewController
+            logonloc = mysplit.logonloc
+        }
         
         if let loc = logonloc{
             configuview()
         }else{
-           // showlogonview()
+          
         }
     }
     override func viewWillAppear(animated: Bool) {
-        //showlogonview()
-    }
-    func showlogonview(){
-        var descon =  LogonViewController()
-        //descon.data = userlogonlocs
-        //descon.pVC = self
-        //descon.modalPresentationStyle = .Popover
         
-        //let popovercontroller = self.popoverPresentationController
-        //popovercontroller?.sourceView = self.view
-        //popovercontroller?.sourceRect = self.view.frame
-        //popovercontroller?.permittedArrowDirections = .Any
-        //popovercontroller?.delegate = self
-        
-        showViewController(descon, sender: nil)
     }
 
        func configuview(){
@@ -106,27 +142,6 @@ class MasterViewController: UITableViewController,UIPopoverPresentationControlle
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
 
-    // MARK: - Segues
-    /*
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        var sel = tableView.indexPathForSelectedRow()
-        if let adm = EpisodeID{
-               return true
-        }
-        return false
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let obj = arr[indexPath.row] as NSDictionary
-        var ADM = obj["EpisodeID"]?.description
-        let newTable = storyboard?.instantiateViewControllerWithIdentifier("EmrCodeTB") as PatCodeTableVC
-        newTable.logonloc = logonloc
-        newTable.EpisodeID = ADM
-        newTable.uisplitvc = self.splitViewController?.viewControllers
-        showViewController(newTable, sender: self)
-    }
-*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             var sel = tableView.indexPathForSelectedRow()
@@ -134,28 +149,14 @@ class MasterViewController: UITableViewController,UIPopoverPresentationControlle
                 let obj = arr[indexPath.row] as NSDictionary
                 var ADM = obj["EpisodeID"]?.description
                 var PatName = obj["PatName"]!.description
-
                 var bedcode = obj["bedCode"]!.description
-
-                
-                 var dest = segue.destinationViewController as PatCodeTableVC
+                var dest = segue.destinationViewController as PatCodeTableVC
                 dest.selectedpatname = PatName + "-" + bedcode
                 dest.EpisodeID = ADM
                 dest.logonloc = logonloc
                 dest.uisplitvc = self.splitViewController!.viewControllers
                 dest.PatName = PatName
-                
-//            let obj = arr[indexPath.section] as NSDictionary
-//            let subobj = obj["subnod"] as NSArray
-//            let sub = subobj[indexPath.row] as NSDictionary
-//            let EmrCode = sub["EmrCode"]?.description
-//            let EmrCodeName = sub["EmrCodenName"]?.description
-//            var desttop = segue.destinationViewController as YBHLJLNavVC
-//            //var desttop = dest.topViewController as DetailViewController
-//            desttop.EmrCode = EmrCode
-//            desttop.EmrCodeName = EmrCodeName
-//            desttop.EpisodeID = EpisodeID
-            }
+                            }
         }
     }
 

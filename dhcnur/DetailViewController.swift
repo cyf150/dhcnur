@@ -33,6 +33,7 @@ class DetailViewController: UITableViewController ,HLJLDisplayContainer{
         let nib = UINib(nibName:"PatCodeTableViewCell",bundle:nil)
         tableView.registerNib(nib!, forCellReuseIdentifier:"YBCell")
         println("viewdidload:")
+       
         configureView()
         //self.tableView.reloadData()
         

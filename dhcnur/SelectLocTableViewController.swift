@@ -60,10 +60,10 @@ class SelectLocTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let obj = data[indexPath.row] as NSDictionary
         var locid = obj["LocID"]?.description
-        self.pVC?.logonloc = locid
-        self.pVC?.logongroup = obj["GroupID"] as? NSString
-        self.pVC?.logonlocdesc = obj["LocDesc"] as? NSString
-        self.pVC?.logonward = obj["WardID"] as? NSString
+        self.pVC?.logoninfo?.LogonLoc = locid
+        self.pVC?.logoninfo?.UserGroup = obj["GroupID"] as? NSString
+        self.pVC?.logoninfo?.LogonLocDesc = obj["LocDesc"] as? NSString
+        self.pVC?.logoninfo?.Wardid = obj["WardID"] as? NSString
         self.pVC?.selectloc.titleLabel?.text = obj["LocDesc"] as? NSString
 
         self.dismissViewControllerAnimated(true, completion: nil)

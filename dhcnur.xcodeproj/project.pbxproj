@@ -10,7 +10,13 @@
 		890563351A010BC9003084A3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890563341A010BC9003084A3 /* DetailViewController.swift */; };
 		8905633C1A010DF5003084A3 /* HBCommView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905633B1A010DF5003084A3 /* HBCommView.swift */; };
 		8905633E1A011399003084A3 /* YBHLJLNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905633D1A011399003084A3 /* YBHLJLNavVC.swift */; };
+		890C2B8F1A0DC03F00C0BFE7 /* UtilAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890C2B8E1A0DC03F00C0BFE7 /* UtilAlert.swift */; };
+		890C2B911A0DC29E00C0BFE7 /* LogUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890C2B901A0DC29E00C0BFE7 /* LogUser.swift */; };
+		890C2B931A0DF15200C0BFE7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890C2B921A0DF15200C0BFE7 /* MainViewController.swift */; };
+		890C2B951A0DFED300C0BFE7 /* PatCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890C2B941A0DFED300C0BFE7 /* PatCollectionViewController.swift */; };
 		8912391519FFA4E200529C5C /* PatCodeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912391419FFA4E200529C5C /* PatCodeTableVC.swift */; };
+		8918727A1A10A52D00644721 /* PatsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891872781A10A52D00644721 /* PatsCollectionViewCell.swift */; };
+		8918727B1A10A52D00644721 /* PatsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 891872791A10A52D00644721 /* PatsCollectionViewCell.xib */; };
 		897389C71A09D0A100D49934 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897389C61A09D0A100D49934 /* NavigationController.swift */; };
 		8974830C1A06043F009D605B /* TraitOverrideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8974830B1A06043F009D605B /* TraitOverrideViewController.swift */; };
 		8988BABC19FB9F8800D87D9D /* SelLocView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988BABB19FB9F8800D87D9D /* SelLocView.xib */; };
@@ -51,7 +57,13 @@
 		890563341A010BC9003084A3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8905633B1A010DF5003084A3 /* HBCommView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBCommView.swift; sourceTree = "<group>"; };
 		8905633D1A011399003084A3 /* YBHLJLNavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBHLJLNavVC.swift; sourceTree = "<group>"; };
+		890C2B8E1A0DC03F00C0BFE7 /* UtilAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilAlert.swift; sourceTree = "<group>"; };
+		890C2B901A0DC29E00C0BFE7 /* LogUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogUser.swift; sourceTree = "<group>"; };
+		890C2B921A0DF15200C0BFE7 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		890C2B941A0DFED300C0BFE7 /* PatCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatCollectionViewController.swift; sourceTree = "<group>"; };
 		8912391419FFA4E200529C5C /* PatCodeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatCodeTableVC.swift; sourceTree = "<group>"; };
+		891872781A10A52D00644721 /* PatsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatsCollectionViewCell.swift; sourceTree = "<group>"; };
+		891872791A10A52D00644721 /* PatsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatsCollectionViewCell.xib; sourceTree = "<group>"; };
 		897389C61A09D0A100D49934 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		8974830B1A06043F009D605B /* TraitOverrideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitOverrideViewController.swift; sourceTree = "<group>"; };
 		8988BABB19FB9F8800D87D9D /* SelLocView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelLocView.xib; sourceTree = "<group>"; };
@@ -116,6 +128,8 @@
 				89CF9D3519FB7716001658F3 /* SelectLocTableViewController.swift */,
 				897389C61A09D0A100D49934 /* NavigationController.swift */,
 				8988BABF19FBD54200D87D9D /* MoreViewController.swift */,
+				890C2B921A0DF15200C0BFE7 /* MainViewController.swift */,
+				890C2B941A0DFED300C0BFE7 /* PatCollectionViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -123,6 +137,7 @@
 		890563381A010C9A003084A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				890C2B901A0DC29E00C0BFE7 /* LogUser.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -135,6 +150,8 @@
 				8905633B1A010DF5003084A3 /* HBCommView.swift */,
 				898D500C1A04A63B00C1B23A /* PatCodeTableViewCell.swift */,
 				898D500E1A04F51100C1B23A /* PatCodeTableViewCell.xib */,
+				891872781A10A52D00644721 /* PatsCollectionViewCell.swift */,
+				891872791A10A52D00644721 /* PatsCollectionViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -143,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				89CF9D3319FB33CA001658F3 /* HttpUtil.swift */,
+				890C2B8E1A0DC03F00C0BFE7 /* UtilAlert.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -323,6 +341,7 @@
 				89D5D5DE19F8CA1200304AE4 /* LaunchScreen.xib in Resources */,
 				89E9B45F19FA8CF70087CB98 /* 2.gif in Resources */,
 				898D500F1A04F51100C1B23A /* PatCodeTableViewCell.xib in Resources */,
+				8918727B1A10A52D00644721 /* PatsCollectionViewCell.xib in Resources */,
 				89E9B45D19FA8CF20087CB98 /* 1.gif in Resources */,
 				8988BABC19FB9F8800D87D9D /* SelLocView.xib in Resources */,
 				89D5D5DB19F8CA1200304AE4 /* Images.xcassets in Resources */,
@@ -382,17 +401,22 @@
 				89CF9D3219FB32CD001658F3 /* LogonViewController.swift in Sources */,
 				89D5D5D419F8CA1200304AE4 /* MasterViewController.swift in Sources */,
 				8905633C1A010DF5003084A3 /* HBCommView.swift in Sources */,
+				890C2B8F1A0DC03F00C0BFE7 /* UtilAlert.swift in Sources */,
 				89D5D5F519F8D5CA00304AE4 /* MyUISpitViewController.swift in Sources */,
 				89CF9D3619FB7716001658F3 /* SelectLocTableViewController.swift in Sources */,
 				8988BABE19FBCF2000D87D9D /* MasterTBarViewController.swift in Sources */,
 				897389C71A09D0A100D49934 /* NavigationController.swift in Sources */,
 				89DB593A1A09D30200916386 /* HLJLContainer.swift in Sources */,
 				898D500D1A04A63B00C1B23A /* PatCodeTableViewCell.swift in Sources */,
+				8918727A1A10A52D00644721 /* PatsCollectionViewCell.swift in Sources */,
 				890563351A010BC9003084A3 /* DetailViewController.swift in Sources */,
 				89D5D5D219F8CA1200304AE4 /* AppDelegate.swift in Sources */,
+				890C2B911A0DC29E00C0BFE7 /* LogUser.swift in Sources */,
 				8912391519FFA4E200529C5C /* PatCodeTableVC.swift in Sources */,
 				89CF9D3419FB33CA001658F3 /* HttpUtil.swift in Sources */,
 				8905633E1A011399003084A3 /* YBHLJLNavVC.swift in Sources */,
+				890C2B931A0DF15200C0BFE7 /* MainViewController.swift in Sources */,
+				890C2B951A0DFED300C0BFE7 /* PatCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

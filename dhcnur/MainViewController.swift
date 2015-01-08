@@ -16,19 +16,66 @@ class MainViewController: UIViewController {
     var logonloc:NSString?
     var backcollectvc:PatCollectionViewController?
     var backtablevc:MasterViewController?
+    var data:NSArray?
     override func viewDidLoad() {
         super.viewDidLoad()
         let collectvc = storyboard?.instantiateViewControllerWithIdentifier("PatCollectView") as PatCollectionViewController
+        var sp = self.splitViewController! as MyUISpitViewController
+        var clape = sp.collapsed
+        
         var childvc = self.childViewControllers as NSArray
         var mavc1 = childvc[1] as MasterViewController
         //var colvc = childvc[0] as PatCollectionViewController
         mavc1.logonloc = logonloc
         mavc1.configuview()
+        if let loc = logonloc{
+          getmenulist()
+        }
        // displayContentController(collectvc)
         //CollectView.hidden = true
         // Do any additional setup after loading the view.
     }
-  
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+        var childvc = self.childViewControllers as NSArray
+        var collectvc = childvc[0] as PatCollectionViewController
+        var ddd = self.view.traitCollection.horizontalSizeClass
+        var viewwidth = self.view.bounds.size
+        var colw = collectvc.view.bounds.size
+    }
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        var childvc = self.childViewControllers as NSArray
+        var collectvc = childvc[0] as PatCollectionViewController
+        let flowLayout = CollectionViewLayout(
+            traitCollection: traitCollection,size: size,rate:1)
+        
+        flowLayout.invalidateLayout()
+        collectvc.collectionView.setCollectionViewLayout(flowLayout,
+            animated: false)
+        
+        collectvc.collectionView.reloadData()
+    }
+    func getmenulist()
+    {
+        var url = "http://10.56.32.254/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getcurwardpat&type=Method"
+        let params=["wardId":logonloc!]
+        HttpUtil().requestwithurlandparam(url, paramdic: params, CompletinonHander: {
+            data in
+            if let retdate = data as? NSObject {
+                var strDIC = data as? NSArray
+                self.data = strDIC!
+                //self.tableView.reloadData()
+                
+                //println(retdate)
+            }
+            else{
+                println("error")
+            }
+        })
+    }
+    override func viewWillLayoutSubviews() {
+        println("layoutsubviews")
+    }
+
     @IBAction func segmentselected(sender: UISegmentedControl) {
         var childvc = self.childViewControllers as NSArray
         //var firstvc = childvc[1] as? MasterViewController
@@ -41,17 +88,28 @@ class MainViewController: UIViewController {
         //ar colvc = childvc[0] as PatCollectionViewController
         if sender.selectedSegmentIndex == 1{
             //var mavc = childvc[1] as MasterViewController
-            ///var colvc = childvc[0] as PatCollectionViewController
+            var colvc = childvc[0] as PatCollectionViewController
             //self.view.bringSubviewToFront(colvc.view)
+            var colapse = self.splitViewController!.collapsed
+            if colapse{
+                let flowLayout = CollectionViewLayout(traitCollection: traitCollection,size: UIScreen.mainScreen().bounds.size,rate: 1)
+                flowLayout.invalidateLayout()
+                colvc.data = self.data
+                colvc.collectionView.setCollectionViewLayout(flowLayout,animated: false)
+                colvc.collectionView.reloadData()
+            }else{
+                var col = self.splitViewController!
+               // var main = col[0] as MasterTBarViewController
+                var kkk = col.preferredPrimaryColumnWidthFraction
+                let flowLayout = CollectionViewLayout(traitCollection: traitCollection,size:UIScreen.mainScreen().bounds.size,rate: kkk)
+                flowLayout.invalidateLayout()
+                colvc.data = self.data
+                //colvc.collectionView.setCollectionViewLayout(flowLayout,animated: false)
+                
+                colvc.collectionView.reloadData()
+            
+            }
             self.view.exchangeSubviewAtIndex(0, withSubviewAtIndex: 1)
-            
-            
-            //mavc.view.alpha = CGFloat(0.0)
-            //colvc.view.alpha = CGFloat(1.0)
-            //backtablevc = mavc
-            //mavc.removeFromParentViewController()
-            //self.addChildViewController(backcollectvc!)
-            //self.view.addSubview(backcollectvc!.view)
         
         }else{
             self.view.exchangeSubviewAtIndex(0, withSubviewAtIndex: 1)

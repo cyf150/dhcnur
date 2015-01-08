@@ -115,7 +115,7 @@ class MasterViewController: UITableViewController,UIPopoverPresentationControlle
     }
     func getmenulist()
     {
-        var url = "http://10.56.32.87/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getcurwardpat&type=Method"
+        var url = "http://10.56.32.254/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getcurwardpat&type=Method"
         let params=["wardId":logonloc!]
         HttpUtil().requestwithurlandparam(url, paramdic: params, CompletinonHander: {
            data in

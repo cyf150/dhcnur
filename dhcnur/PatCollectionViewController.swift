@@ -8,31 +8,49 @@
 
 import UIKit
 
-let reuseIdentifier = "CCell"
+let reuseIdentifier = "CollectCell"
 
-class PatCollectionViewController: UICollectionViewController {
+class PatCollectionViewController: UIViewController{
 
     @IBOutlet weak var image: UIImageView!
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var name: UILabel!
     
+    @IBOutlet weak var CImage: UIImageView!
     @IBOutlet weak var bedcode: UILabel!
-    
+    var data:NSArray?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.reloadData()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        
+        //let nib = UINib(nibName:"PatsCollectionViewCell",bundle:nil)
+        image.image = UIImage(named: "BackgroundImage")
+        let flowLayout = CollectionViewLayout(
+            traitCollection: traitCollection,size: UIScreen.mainScreen().bounds.size,rate: 1)
+        //var par = self
+        //var sp = par!.splitViewController
+        flowLayout.invalidateLayout()
+        collectionView.setCollectionViewLayout(flowLayout, animated: false)
+        
 
-        // Register cell classes
-        //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        //elf.collectionView!.registerClass(PatCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        let nib = UINib(nibName:"PatsCollectionViewCell",bundle:nil)
-        collectionView?.registerNib(nib, forCellWithReuseIdentifier: "CCell")  //(nib!, forCellReuseIdentifier:"Cell")
-        // Do any additional setup after loading the view.
+        //collectionView.reloadData()
+    
     }
+    /*
+    func collectionView(collectionView: UICollectionView!,
+        didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+        var dest = PatCodeTableVC()
+            let selectdic = self.data![indexPath.row] as NSDictionary
+            dest.selectedpatname = selectdic["PatName"]!.description! + "-" + selectdic["bedCode"]!.description!
+            dest.EpisodeID = selectdic["EpisodeID"]?.description
+            //dest.logonloc = self.logonloc
+            dest.PatName = selectdic["PatName"]?.description
+            showViewController(dest, sender: nil)
 
+    
+    }
+    */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,26 +68,36 @@ class PatCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         //#warning Incomplete method implementation -- Return the number of sections
         return 1
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
-        return 24
+     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        var subn = 0
+        if let patdata = self.data  {
+           //let newarray = patdata as NSArray
+           subn = patdata.count
+        }
+       return subn
+        
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as PatsCollectionViewCell
-        cell.data = ["Patname":indexPath.row,"bedcode":"01"]
+     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as PatCollectionViewCell
+        if let dd = data{
+          var indexdata = dd[indexPath.row] as NSDictionary
+          cell.data = indexdata
+        }
+        //cell.data = ["Patname":indexPath.row,"bedcode":indexPath.row,"image":"flag_canada"]
         
         // Configure the cell
     
         return cell
     }
-
+    
+   
 
     // MARK: UICollectionViewDelegate
 

@@ -91,7 +91,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
         
     }
     func logon() {
-        var url = "http://10.56.32.87/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=logon&type=Method"
+        var url = "http://10.56.32.254/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=logon&type=Method"
         var usern = username.text!
         var pass = password.text!
         if (usern == "")||(pass == "")

@@ -56,16 +56,17 @@ class MainViewController: UIViewController {
     }
     func getmenulist()
     {
-        var url = "http://10.56.32.254/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getcurwardpat&type=Method"
+        var url = "http://123.56.91.132/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getcurwardpat&type=Method"
         let params=["wardId":logonloc!]
         HttpUtil().requestwithurlandparam(url, paramdic: params, CompletinonHander: {
             data in
             if let retdate = data as? NSObject {
                 var strDIC = data as? NSArray
-                self.data = strDIC!
-                //self.tableView.reloadData()
-                
-                //println(retdate)
+                if let retdic = strDIC {
+                  self.data = strDIC!
+                  //self.tableView.reloadData()
+                  //println(retdate)
+                }
             }
             else{
                 println("error")

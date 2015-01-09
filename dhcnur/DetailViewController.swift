@@ -88,7 +88,7 @@ class DetailViewController: UITableViewController ,HLJLDisplayContainer{
     
     func getmenulist()
     {
-        var url = "http://10.56.32.254/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getadmemrcodedata&type=Method"
+        var url = "http://123.56.91.132/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getadmemrcodedata&type=Method"
         let param=["Adm":EpisodeID!,"EmrCode":EmrCode!]
         HttpUtil().requestwithurlandparam(url, paramdic: param, CompletinonHander: {
             data in

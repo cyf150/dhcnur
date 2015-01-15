@@ -26,7 +26,11 @@ class PatCodeTableVC: UITableViewController ,HLJLDisplayContainer{
         println("PatCodeTableVC--")
         println(self.traitCollection.horizontalSizeClass.hashValue)
         getmenulist()
-        
+        //let nib = UINib(nibName:"CodeTBCell",bundle:nil)
+        //tableView.registerNib(nib, forCellReuseIdentifier:"SubCell")
+        //self.tableView.registerClass("PatCodeTableVC", forCellReuseIdentifier: "SubCell")
+        //println("viewdidload:")
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

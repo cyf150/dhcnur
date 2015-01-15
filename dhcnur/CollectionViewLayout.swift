@@ -21,19 +21,21 @@ class CollectionViewLayout: UICollectionViewFlowLayout {
         var sectionw:CGFloat = 2.0
         var toph:CGFloat = 5
         var bottomh:CGFloat = 5
-        var w = (size.width*rate - colnum*2.0*sectionw)/colnum
+        var w:CGFloat = (size.width*rate - (colnum+1)*sectionw)/colnum
         var h:CGFloat = 100
         
         if traitCollection.userInterfaceIdiom == .Pad {
+            w = 50
             itemSize = CGSize(width:w , height: h)
             sectionInset = UIEdgeInsets(top: toph, left: sectionw,
                 bottom: bottomh, right: sectionw)
+            estimatedItemSize = CGSize(width: 100, height: 100)
         } else {
             itemSize = CGSize(width:w , height: h)
             sectionInset = UIEdgeInsets(top: toph, left: sectionw,
                 bottom: bottomh, right: sectionw)
         }
-        itemSize.height = UITableViewAutomaticDimension
+        //itemSize.height = UITableViewAutomaticDimension
         
     }
     

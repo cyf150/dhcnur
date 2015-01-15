@@ -93,7 +93,8 @@ class MainViewController: UIViewController {
             //self.view.bringSubviewToFront(colvc.view)
             var colapse = self.splitViewController!.collapsed
             if colapse{
-                let flowLayout = CollectionViewLayout(traitCollection: traitCollection,size: UIScreen.mainScreen().bounds.size,rate: 1)
+                var winsize = UIScreen.mainScreen().bounds.size
+                let flowLayout = CollectionViewLayout(traitCollection: traitCollection,size:winsize ,rate: 1)
                 flowLayout.invalidateLayout()
                 colvc.data = self.data
                 colvc.collectionView.setCollectionViewLayout(flowLayout,animated: false)
@@ -106,7 +107,7 @@ class MainViewController: UIViewController {
                 flowLayout.invalidateLayout()
                 colvc.data = self.data
                 //colvc.collectionView.setCollectionViewLayout(flowLayout,animated: false)
-                
+                colvc.logonloc = self.logonloc
                 colvc.collectionView.reloadData()
             
             }

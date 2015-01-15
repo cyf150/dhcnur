@@ -20,37 +20,39 @@ class PatCollectionViewController: UIViewController{
     @IBOutlet weak var CImage: UIImageView!
     @IBOutlet weak var bedcode: UILabel!
     var data:NSArray?
+    var logonloc:NSString?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //let nib = UINib(nibName:"PatsCollectionViewCell",bundle:nil)
         image.image = UIImage(named: "BackgroundImage")
-        let flowLayout = CollectionViewLayout(
-            traitCollection: traitCollection,size: UIScreen.mainScreen().bounds.size,rate: 1)
+        //let flowLayout = CollectionViewLayout(
+         //   traitCollection: traitCollection,size: UIScreen.mainScreen().bounds.size,rate: 1)
         //var par = self
         //var sp = par!.splitViewController
-        flowLayout.invalidateLayout()
-        collectionView.setCollectionViewLayout(flowLayout, animated: false)
+        //flowLayout.invalidateLayout()
+        //collectionView.setCollectionViewLayout(flowLayout, animated: false)
         
 
         //collectionView.reloadData()
     
     }
-    /*
+    
     func collectionView(collectionView: UICollectionView!,
         didSelectItemAtIndexPath indexPath: NSIndexPath!) {
         var dest = PatCodeTableVC()
             let selectdic = self.data![indexPath.row] as NSDictionary
             dest.selectedpatname = selectdic["PatName"]!.description! + "-" + selectdic["bedCode"]!.description!
             dest.EpisodeID = selectdic["EpisodeID"]?.description
-            //dest.logonloc = self.logonloc
+            dest.logonloc = self.logonloc
             dest.PatName = selectdic["PatName"]?.description
-            showViewController(dest, sender: nil)
+            //showViewController(dest, sender: nil)
+            showDetailViewController(dest, sender: nil)
+            
 
     
     }
-    */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -96,7 +98,7 @@ class PatCollectionViewController: UIViewController{
     
         return cell
     }
-    
+
    
 
     // MARK: UICollectionViewDelegate

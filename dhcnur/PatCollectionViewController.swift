@@ -42,7 +42,7 @@ class PatCollectionViewController: UIViewController{
     func collectionView(collectionView: UICollectionView!,
         didSelectItemAtIndexPath indexPath: NSIndexPath!) {
         var dest = PatCodeTableVC()
-            let selectdic = self.data![indexPath.row] as NSDictionary
+            let selectdic = self.data![indexPath.row] as! NSDictionary
             dest.selectedpatname = selectdic["PatName"]!.description! + "-" + selectdic["bedCode"]!.description!
             dest.EpisodeID = selectdic["EpisodeID"]?.description
             dest.logonloc = self.logonloc
@@ -87,9 +87,9 @@ class PatCollectionViewController: UIViewController{
     }
 
      func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as PatCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PatCollectionViewCell
         if let dd = data{
-          var indexdata = dd[indexPath.row] as NSDictionary
+          var indexdata = dd[indexPath.row] as! NSDictionary
           cell.data = indexdata
         }
         //cell.data = ["Patname":indexPath.row,"bedcode":indexPath.row,"image":"flag_canada"]

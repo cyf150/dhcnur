@@ -45,7 +45,7 @@ class SelectLocTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCellWithIdentifier("LocCell", forIndexPath: indexPath) as UITableViewCell
         var cell = tableView.dequeueReusableCellWithIdentifier("LocCell") as? UITableViewCell
-        if let ce = cell? {
+        if let ce = cell {
             
         }
         else{
@@ -53,18 +53,18 @@ class SelectLocTableViewController: UITableViewController {
         }
         
          //let object = objects[indexPath.row] as NSDate
-        let obj = data[indexPath.row] as NSDictionary
-        cell?.textLabel?.text = obj["LocDesc"] as NSString
+        let obj = data[indexPath.row] as! NSDictionary
+        cell?.textLabel?.text = obj["LocDesc"]  as? String
         return cell!
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let obj = data[indexPath.row] as NSDictionary
+        let obj = data[indexPath.row] as! NSDictionary
         var locid = obj["LocID"]?.description
         self.pVC?.logoninfo?.LogonLoc = locid
         self.pVC?.logoninfo?.UserGroup = obj["GroupID"] as? NSString
         self.pVC?.logoninfo?.LogonLocDesc = obj["LocDesc"] as? NSString
         self.pVC?.logoninfo?.Wardid = obj["WardID"] as? NSString
-        self.pVC?.selectloc.titleLabel?.text = obj["LocDesc"] as? NSString
+        self.pVC?.selectloc.titleLabel?.text = obj["LocDesc"] as? String
 
         self.dismissViewControllerAnimated(true, completion: nil)
     }

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "dhcnur/LogonViewController.swift"
-            timestampString = "442378267.182726"
+            timestampString = "444743623.470548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "logon()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,27 +26,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "dhcnur/LogonViewController.swift"
-            timestampString = "442378367.948036"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "logon()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "dhcnur/LogonViewController.swift"
-            timestampString = "442378934.762242"
+            timestampString = "444743623.470548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
             endingLineNumber = "112"
+            landmarkName = "logon()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "dhcnur/LogonViewController.swift"
+            timestampString = "444743623.470548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "logon()"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "dhcnur/LogonViewController.swift"
-            timestampString = "442388817.943715"
+            timestampString = "444743623.470548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "logon()"
             landmarkType = "5">
          </BreakpointContent>
@@ -184,6 +184,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "dhcnur.HttpUtil.requestwithurlandparam (dhcnur.HttpUtil)(Swift.String, paramdic : ObjectiveC.NSDictionary, CompletinonHander : (data : Swift.AnyObject) -&gt; ()) -&gt; ()"
                   moduleName = "dhcnur"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qishaoe/Desktop/cyf/DHC/dhcnur/dhcnur/HttpUtil.swift"
                   timestampString = "442452236.012551"
                   startingColumnNumber = "9223372036854775807"
@@ -198,6 +199,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "dhcnur.HttpUtil.(requestwithurlandparam (dhcnur.HttpUtil) -&gt; (Swift.String, paramdic : ObjectiveC.NSDictionary, CompletinonHander : (data : Swift.AnyObject) -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "dhcnur"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qishaoe/Desktop/cyf/DHC/dhcnur/dhcnur/HttpUtil.swift"
                   timestampString = "442452236.012811"
                   startingColumnNumber = "9223372036854775807"
@@ -212,6 +214,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "reabstraction thunk helper from @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.AFHTTPRequestOperation&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;) -&gt; (@unowned ()) to @callee_owned (@in (Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.AFHTTPRequestOperation&gt;, Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;)) -&gt; (@out ())"
                   moduleName = "dhcnur"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qishaoe/Desktop/cyf/DHC/dhcnur/dhcnur/HttpUtil.swift"
                   timestampString = "442452236.013024"
                   startingColumnNumber = "9223372036854775807"
@@ -226,6 +229,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "reabstraction thunk helper from @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.AFHTTPRequestOperation&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;) -&gt; (@unowned ()) to @callee_unowned @objc_block (@unowned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.AFHTTPRequestOperation&gt;, @unowned Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;) -&gt; (@unowned ())"
                   moduleName = "dhcnur"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qishaoe/Desktop/cyf/DHC/dhcnur/dhcnur/HttpUtil.swift"
                   timestampString = "442452236.013577"
                   startingColumnNumber = "9223372036854775807"
@@ -442,6 +446,22 @@
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "dhcnur/SelectLocTableViewController.swift"
+            timestampString = "446653885.033125"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

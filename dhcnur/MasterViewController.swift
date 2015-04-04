@@ -83,7 +83,7 @@ class MasterViewController: UITableViewController,UIPopoverPresentationControlle
         var par = self.parentViewController
         var sp = self.splitViewController
         if let mysp = sp{
-            let mysplit = mysp as MyUISpitViewController
+            let mysplit = mysp as! MyUISpitViewController
             logonloc = mysplit.logonloc
         }
         
@@ -100,14 +100,14 @@ class MasterViewController: UITableViewController,UIPopoverPresentationControlle
        func configuview(){
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-            var tbvc = split.viewControllers[0] as MasterTBarViewController
+            var tbvc = split.viewControllers[0] as! MasterTBarViewController
             self.logonloc = tbvc.tblogonloc
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
         println("Masterviewinit")
         self.tableView.estimatedRowHeight = 44;
         tableView.rowHeight = UITableViewAutomaticDimension
-        if let loc = logonloc?{
+        if let loc = logonloc{
             getmenulist()
         }
         
@@ -147,11 +147,11 @@ class MasterViewController: UITableViewController,UIPopoverPresentationControlle
         if segue.identifier == "showDetail" {
             var sel = tableView.indexPathForSelectedRow()
             if let indexPath = sel{
-                let obj = arr[indexPath.row] as NSDictionary
+                let obj = arr[indexPath.row] as! NSDictionary
                 var ADM = obj["EpisodeID"]?.description
                 var PatName = obj["PatName"]!.description
                 var bedcode = obj["bedCode"]!.description
-                var dest = segue.destinationViewController as PatCodeTableVC
+                var dest = segue.destinationViewController as! PatCodeTableVC
                 dest.selectedpatname = PatName + "-" + bedcode
                 dest.EpisodeID = ADM
                 dest.logonloc = logonloc
@@ -172,11 +172,11 @@ class MasterViewController: UITableViewController,UIPopoverPresentationControlle
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
 
         //let object = objects[indexPath.row] as NSDate
-        let obj = arr[indexPath.row] as NSDictionary
-        cell.textLabel?.text = obj["PatName"] as NSString
+        let obj = arr[indexPath.row] as! NSDictionary
+        cell.textLabel?.text = obj["PatName"]  as! String
         cell.detailTextLabel?.text = obj["bedCode"]?.description
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell

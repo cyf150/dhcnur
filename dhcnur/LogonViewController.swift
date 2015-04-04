@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate {
+class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var sure: UIButton!
     @IBOutlet weak var username: UITextField!
@@ -19,7 +19,10 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
 
         // Do any additional setup after loading the view.
     }
-
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -32,7 +35,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
     
     @IBAction func password_didend(sender: AnyObject) {
         self.password.resignFirstResponder()
-        if (password.text != "")&(username.text != "")
+        if (password.text != "")&&(username.text != "")
         {
            self.sure.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
         }
@@ -42,7 +45,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
         UIApplication.sharedApplication().sendAction(Selector("resignFirstResponder"), to: nil, from: nil, forEvent: nil)
     }
     @IBAction func Selectlogonloc(sender: UIView) {
-        if let loc = logoninfo? {
+        if let loc = logoninfo {
             //var descon = storyboard?.instantiateViewControllerWithIdentifier("SelectLocT") as UITableViewController
             var descon =  SelectLocTableViewController()
             descon.data = logoninfo?.LocArray
@@ -60,7 +63,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
         }
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController!) -> UIModalPresentationStyle{
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
       return UIModalPresentationStyle.None
     }
     
@@ -78,7 +81,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
     }
        //logon
     @IBAction func btnsure(sender: UIView) {
-        if let loc = logoninfo? {
+        if let loc = logoninfo {
            //var descon = storyboard?.instantiateViewControllerWithIdentifier("spvc") as MyUISpitViewController //TraitOverrideViewController  //MyUISpitViewController()
             //var descon = storyboard?.instantiateViewControllerWithIdentifier("TraitVC") as TraitOverrideViewController
              //descon.logonloc = logonloc
@@ -90,6 +93,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
         }
         
     }
+    
     func logon() {
         var url = "http://123.56.91.132/dthealth/web/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=logon&type=Method"
         var usern = username.text!
@@ -110,15 +114,15 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
                 if strDIC?.count > 0 {
                    let loguser = strDIC?["UserID"]?.description
                     var errinfo = strDIC?["ErrorInfo"]?.description
-                    if (errinfo? != ""){
+                    if (errinfo != ""){
                         let alert = UtilAlert().CommAlert(errinfo!)
                         self.presentViewController(alert, animated: true, completion: nil)
                         return
                     }
                    let locarr = strDIC?["Locs"] as? NSArray
                    if locarr?.count>0 {
-                      var firstdic = locarr?[0] as NSDictionary
-                      self.selectloc.titleLabel?.text = firstdic["LocDesc"] as NSString
+                      var firstdic = locarr?[0] as! NSDictionary
+                      self.selectloc.titleLabel?.text = firstdic["LocDesc"] as! NSString as String
                       if let obj = self.logoninfo{
                        
                     }else{
@@ -163,7 +167,7 @@ class LogonViewController: UIViewController,UIPopoverControllerDelegate, UIPopov
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        var des = segue.destinationViewController as TraitOverrideViewController
+        var des = segue.destinationViewController as! TraitOverrideViewController
         //var mysp = des.childViewControllers[0] as MyUISpitViewController
         //mysp.logonloc = self.logonloc
         

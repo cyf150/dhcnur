@@ -19,12 +19,12 @@ class MainViewController: UIViewController {
     var data:NSArray?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let collectvc = storyboard?.instantiateViewControllerWithIdentifier("PatCollectView") as PatCollectionViewController
-        var sp = self.splitViewController! as MyUISpitViewController
+        let collectvc = storyboard?.instantiateViewControllerWithIdentifier("PatCollectView") as! PatCollectionViewController
+        var sp = self.splitViewController! as! MyUISpitViewController
         var clape = sp.collapsed
         
         var childvc = self.childViewControllers as NSArray
-        var mavc1 = childvc[1] as MasterViewController
+        var mavc1 = childvc[1] as! MasterViewController
         //var colvc = childvc[0] as PatCollectionViewController
         mavc1.logonloc = logonloc
         mavc1.configuview()
@@ -37,14 +37,14 @@ class MainViewController: UIViewController {
     }
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         var childvc = self.childViewControllers as NSArray
-        var collectvc = childvc[0] as PatCollectionViewController
+        var collectvc = childvc[0] as! PatCollectionViewController
         var ddd = self.view.traitCollection.horizontalSizeClass
         var viewwidth = self.view.bounds.size
         var colw = collectvc.view.bounds.size
     }
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         var childvc = self.childViewControllers as NSArray
-        var collectvc = childvc[0] as PatCollectionViewController
+        var collectvc = childvc[0] as! PatCollectionViewController
         let flowLayout = CollectionViewLayout(
             traitCollection: traitCollection,size: size,rate:1)
         
@@ -89,7 +89,7 @@ class MainViewController: UIViewController {
         //ar colvc = childvc[0] as PatCollectionViewController
         if sender.selectedSegmentIndex == 1{
             //var mavc = childvc[1] as MasterViewController
-            var colvc = childvc[0] as PatCollectionViewController
+            var colvc = childvc[0] as! PatCollectionViewController
             //self.view.bringSubviewToFront(colvc.view)
             var colapse = self.splitViewController!.collapsed
             if colapse{
@@ -179,7 +179,7 @@ class MainViewController: UIViewController {
 */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showlist"{
-           var dest = segue.destinationViewController as MasterViewController
+           var dest = segue.destinationViewController as! MasterViewController
            dest.logonloc = logonloc
         }
     }

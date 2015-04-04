@@ -74,7 +74,7 @@ class MasterTBarViewController: UITabBarController,HLJLDisplayContainer {
     }
     func dhc_mastercontrollertopVC() -> NavigationController? {
         if let selvc = self.selectedViewController as? HLJLDisplayContainer{
-            var main = self.selectedViewController as NavigationController
+            var main = self.selectedViewController as! NavigationController
             return main
         }
         return nil

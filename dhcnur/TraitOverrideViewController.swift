@@ -23,7 +23,7 @@ class TraitOverrideViewController: UIViewController {
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //if segue.identifier == "showsp"{
-            var descon = segue.destinationViewController as MyUISpitViewController
+            var descon = segue.destinationViewController as! MyUISpitViewController
             descon.logonloc = logonloc
         //
         //}
@@ -33,11 +33,11 @@ class TraitOverrideViewController: UIViewController {
         var traitOverride: UITraitCollection? = nil
         if size.width > 414 {
             traitOverride = UITraitCollection(horizontalSizeClass: .Regular)
-            setOverrideTraitCollection(traitOverride, forChildViewController: childViewControllers[0] as UIViewController)
+            setOverrideTraitCollection(traitOverride, forChildViewController: childViewControllers[0] as! UIViewController)
         }
         else{
             traitOverride = UITraitCollection(horizontalSizeClass: .Compact)
-            setOverrideTraitCollection(nil, forChildViewController: childViewControllers[0] as UIViewController)
+            setOverrideTraitCollection(nil, forChildViewController: childViewControllers[0] as! UIViewController)
         }
        
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)

@@ -20,7 +20,7 @@ class HBCommView: UITableViewCell {
     
     var dataobj:NSDictionary? {
         didSet{
-            if let data = dataobj?{
+            if let data = dataobj{
                 self.CareDate.text = data["CareDate"]?.description
                 self.CareTime.text = data["CareTime"]?.description
                 self.CaseMeasure.text = data["CaseMeasure"]?.description

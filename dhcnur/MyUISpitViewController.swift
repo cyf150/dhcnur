@@ -59,8 +59,8 @@ class MyUISpitViewController: UISplitViewController,UISplitViewControllerDelegat
         //descon.data = userlogonlocs
         //descon.pVC = self
         descon.modalPresentationStyle = .Popover
-        var presingVC = self.viewControllers[0] as MasterTBarViewController
-        var tbvc1 = presingVC.selectedViewController as MasterViewController
+        var presingVC = self.viewControllers[0] as! MasterTBarViewController
+        var tbvc1 = presingVC.selectedViewController as! MasterViewController
         let popovercontroller = tbvc1.popoverPresentationController
         popovercontroller?.sourceView = self.view
         popovercontroller?.sourceRect = self.view.frame

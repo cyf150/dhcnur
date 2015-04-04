@@ -39,10 +39,10 @@ class DetailViewController: UITableViewController ,HLJLDisplayContainer{
         
     }
     private func configureView(){
-        self.navigationItem.title = EmrCodeName
+        self.navigationItem.title = EmrCodeName as! String
         if let adm = EmrCode{
             makeAllContentHidden(false)
-            if let btn = leftbarbutton?{
+            if let btn = leftbarbutton{
                 self.navigationItem.leftBarButtonItem = leftbarbutton
             }
             if let adm = EpisodeID
@@ -75,7 +75,7 @@ class DetailViewController: UITableViewController ,HLJLDisplayContainer{
     }
     // Private methods
     private func makeAllContentHidden(hidden: Bool) {
-        for subview in view.subviews as [UIView] {
+        for subview in view.subviews as! [UIView] {
             subview.hidden = hidden
         }
         if hidden {
@@ -125,14 +125,14 @@ class DetailViewController: UITableViewController ,HLJLDisplayContainer{
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         var num = 0
-        if let tmpnum = arr?{
+        if let tmpnum = arr{
           num = tmpnum.count
         }
         
         return num
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var dest = segue.destinationViewController as PatCodeTableVC
+        var dest = segue.destinationViewController as! PatCodeTableVC
         // dest.uisplitvc = self.splitViewController! as MyUISpitViewController
         
     }
@@ -140,7 +140,7 @@ class DetailViewController: UITableViewController ,HLJLDisplayContainer{
         //let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
         //let cell = tableView.dequeueReusableCellWithIdentifier("HBCell") as HBCommView
         let cell =  tableView.dequeueReusableCellWithIdentifier("YBCell", forIndexPath: indexPath) as? PatCodeTableViewCell
-        if let arro = arr?
+        if let arro = arr
         {
            cell!.celldata = arro[indexPath.row] as? NSDictionary
         }

@@ -22,7 +22,7 @@ class PatCodeTableVC: UITableViewController ,HLJLDisplayContainer{
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 31
-        self.navigationItem.title = selectedpatname
+        self.navigationItem.title = selectedpatname as! String
         println("PatCodeTableVC--")
         println(self.traitCollection.horizontalSizeClass.hashValue)
         getmenulist()
@@ -70,7 +70,7 @@ class PatCodeTableVC: UITableViewController ,HLJLDisplayContainer{
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         var num = 0
-        if let nu = arr?{
+        if let nu = arr{
           num = nu.count
         }
         return num
@@ -80,9 +80,9 @@ class PatCodeTableVC: UITableViewController ,HLJLDisplayContainer{
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         var num = 0
-        if let nu = arr?{
-            var obj = arr![section] as NSDictionary
-            var subnodobj = obj["subnod"] as NSArray
+        if let nu = arr{
+            var obj = arr![section] as! NSDictionary
+            var subnodobj = obj["subnod"] as! NSArray
             num = subnodobj.count
         }
         
@@ -90,9 +90,9 @@ class PatCodeTableVC: UITableViewController ,HLJLDisplayContainer{
     }
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var title = ""
-        if let ti = arr?{
-            var obj = arr![section] as NSDictionary
-            title = obj["NodName"] as NSString
+        if let ti = arr{
+            var obj = arr![section] as! NSDictionary
+            title = obj["NodName"] as! String
         }
        
         return title
@@ -101,11 +101,11 @@ class PatCodeTableVC: UITableViewController ,HLJLDisplayContainer{
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-        let cell = tableView.dequeueReusableCellWithIdentifier("SubCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SubCell", forIndexPath: indexPath) as! UITableViewCell
         //let object = objects[indexPath.row] as NSDate
-        let obj = arr![indexPath.section] as NSDictionary
-        let subobj = obj["subnod"] as NSArray
-        let sub = subobj[indexPath.row] as NSDictionary
+        let obj = arr![indexPath.section] as! NSDictionary
+        let subobj = obj["subnod"] as! NSArray
+        let sub = subobj[indexPath.row] as! NSDictionary
         cell.textLabel?.text = sub["EmrCodeName"]?.description
         cell.textLabel?.font = UIFont(name: "System.System", size: 12.0)
         var ifsaved = sub["IfSaved"]?.description
@@ -123,10 +123,10 @@ class PatCodeTableVC: UITableViewController ,HLJLDisplayContainer{
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let sp = self.splitViewController {
-            let obj = arr![indexPath.section] as NSDictionary
-            let subobj = obj["subnod"] as NSArray
-            let sub = subobj[indexPath.row] as NSDictionary
-            let EmrCode = sub["EmrCode"] as NSString
+            let obj = arr![indexPath.section] as! NSDictionary
+            let subobj = obj["subnod"] as! NSArray
+            let sub = subobj[indexPath.row] as! NSDictionary
+            let EmrCode = sub["EmrCode"] as! NSString
             let EmrCodeName = sub["EmrCodeName"]?.description
             var destcontrol = DetailViewController()
             destcontrol.EpisodeID = EpisodeID
@@ -134,7 +134,7 @@ class PatCodeTableVC: UITableViewController ,HLJLDisplayContainer{
             destcontrol.EmrCodeName = EmrCodeName
            if sp.collapsed{
                           //showViewController(destcontrol, sender: nil)
-             var parat = self.parentViewController as NavigationController
+             var parat = self.parentViewController as! NavigationController
              parat.pushViewController(destcontrol, animated: true)
            }else{
               let nav = NavigationController()
@@ -192,10 +192,10 @@ class PatCodeTableVC: UITableViewController ,HLJLDisplayContainer{
 */
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         var titlearr = [NSString]()
-        if let ti = arr?{
+        if let ti = arr{
             for itm in ti {
-                var obj = itm as NSDictionary
-                var title = obj["NodName"] as NSString
+                var obj = itm as! NSDictionary
+                var title = obj["NodName"] as! NSString
                 var range = NSRange(location: 0, length: 1)
                 var name = title.substringWithRange(range)
                 titlearr.append(name)
